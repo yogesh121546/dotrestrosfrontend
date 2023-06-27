@@ -9,12 +9,12 @@
   
 body{
   background-color: #f2f2f2;
-  font-family: 'Jost', sans-serif;
+  font-family: sans-serif;
   /* overflow: hidden; */
 }
 
 .header_main{
-  font-family: 'Jost', sans-serif;
+  font-family: sans-serif;
 }
 
 .dosrestros_logo_phone{
@@ -79,7 +79,7 @@ input::placeholder{
 
 /* hotelpagecss */
 *{
-  font-family: 'Jost', sans-serif !important;
+  font-family:  sans-serif !important;
 }
 input.outlined-basic{
   border:5px solid red !important;

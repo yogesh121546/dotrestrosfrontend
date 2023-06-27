@@ -1,7 +1,7 @@
 const Hotellist=[
     {
         id:1,
-        name:"Harikrushna Restaurent",
+        name:"Harikrushna Restaurant",
         location:"Kamrej, Surat",
         image:"/images/harikrushna.jpeg",
         discount:"10%",
@@ -14,7 +14,8 @@ const Hotellist=[
         openhr:11,
         openmin:0,
         closehr:21,
-        closemin:0
+        closemin:0,
+        special:"Best Pick for You"
 
     },
     {
