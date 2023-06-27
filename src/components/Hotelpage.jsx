@@ -241,10 +241,10 @@ useEffect(() => {
   return (
     <>
       <Header />
-      <Grid sx={{ display: { xs: "flex" }, marginTop: "7%", justifyContent: "center", marginLeft: { xs: "3%", md: "-1.6%" } }} container spacing={0}>
+      <Grid sx={{ display: { xs: "flex" }, marginTop: "7%", justifyContent: "space-evenly", flexWrap:'wrap' }} container spacing={0}>
         <Grid sx={{}} item md={6} xs={12}>
 
-          <Card sx={{ width: 'auto', minWidth: "500px", height: 'auto', borderRadius: '20px', boxShadow: 0 }}>
+          <Card sx={{ width: '55vw', minWidth: "600px", height: 'auto', borderRadius: '20px', boxShadow: 0 }}>
 
             <CardMedia
               component="img"
@@ -285,12 +285,12 @@ useEffect(() => {
               <Grid container spacing={0} >
                 <Grid xs={6} >
                   <Typography variant="body2" color="text.secondary" fontWeight="700"  >
-                    Contact-72XXXXXXXXX3
+                    Contact-{hotel.contact}
                   </Typography>
                 </Grid>
-                <Grid sx={{ paddingLeft: "23%" }} xs={6} >
+                <Grid sx={{ paddingLeft: "20%" }} xs={6} >
                   <Typography variant="body2" color="text.secondary" fontWeight="700">
-                    Flat <span style={{ color: "#2A88DF" }} >10%</span> off on the total bill
+                    Flat <span style={{ color: "#2A88DF" }} >{hotel.discount}</span> off on the total bill
                   </Typography>
                 </Grid>
               </Grid>
@@ -300,7 +300,7 @@ useEffect(() => {
 
                   <Grid>
                     <Typography variant="body2" color="text.secondary" >
-                      Get directions on map
+                      <Link style={{textDecoration:'none', color:'inherit'}} to={hotel.direction}>Get directions on map</Link>
                     </Typography>
                   </Grid>
 
@@ -313,9 +313,9 @@ useEffect(() => {
 
         </Grid>
         <Grid item md={4} xs={12}>
-          <Card sx={{ paddingLeft: "5%", marginLeft: "10%", width: '505px', height: '525px', borderRadius: '20px', boxShadow: 0 }}>
+          <Card sx={{ paddingLeft: "0%", marginLeft: "6%", width: '505px', height: '525px', borderRadius: '20px', boxShadow: 0, backgroundColor:'white' }}>
             <CardHeader
-              sx={{ marginTop: "5%", paddingBottom: 0 }}
+              sx={{ marginTop: "0%", paddingBottom: 0 }}
               title={
                 <Grid container sx={{ alignItems: "center" }} >
                   <Grid sx={{ display: "flex", alignItems: "center", marginRight: "1%" }} ><img src='/images/cuisine.png' style={{ width: "30px", height: "30px " }} alt='cuisine logo' /></Grid>
@@ -328,7 +328,7 @@ useEffect(() => {
               }
               subheader={
                 <Typography sx={{ marginLeft: "30px" }} variant="h7" fontWeight="700" color="text.secondary"  >
-                  Gujrati, Punjabi, Beverages
+                  {hotel.cuisine}
                 </Typography>
               }
             />
@@ -346,7 +346,7 @@ useEffect(() => {
               }
               subheader={
                 <Typography sx={{ marginLeft: "30px" }} variant="h7" fontWeight="700" color="text.secondary"  >
-                  Fine Dine
+                  {hotel.type}
                 </Typography>
               }
             />
@@ -416,7 +416,7 @@ useEffect(() => {
               subheader={
 
                 <Typography sx={{ marginLeft: "30px" }} variant="h7" fontWeight="700" color="text.secondary"  >
-                  500 for 2 person
+                  {hotel.costavg}
                 </Typography>
               }
             />
@@ -425,31 +425,33 @@ useEffect(() => {
       </Grid>
 
 
-      <Grid sx={{ marginTop: "2%", justifyContent: "center", marginLeft: { xs: "3%", md: "-0.1%", minWidth: "500px" } }} container  >
+      <Grid sx={{ marginTop: "2%", justifyContent: "space-evenly", marginLeft: { xs: "3%", md: "0%", minWidth: "500px" }, marginRight:'0px' }} container  >
         <Grid sx={{ backgroundColor: "#fff", borderRadius: "20px" }} >
           <Grid
             container
             display="flex"
+            justifyContent="space-between"
+            flexWrap='wrap'
             sx={{
-              '& > :not(style)': { m: 3.4, width: '40ch' }
+              '& > :not(style)': { m: 6.6, width: '40ch' },
             }}
             autoComplete="off"
           >
-            <Grid item xs={12} md={5} >
+            <Grid item xs={12} md={5}>
               <Grid><Typography item sx={{}} variant="h6" fontWeight="700" >
                 Booking Details
               </Typography></Grid>
-              <Grid style={{ marginBottom: "2rem" }}><TextField onChange={customerName} name='fullname' type='text' id="outlined-basic" label="Full Name" variant="outlined" style={{ width: "32rem" }} /></Grid>
-              <Grid><TextField onChange={mobileNumber} name="number" type='tel' id="outlined-basic" label="Mobile Number" variant="outlined" style={{ width: "32rem" }} /></Grid>
+              <Grid style={{ marginBottom: "2rem" }}><TextField onChange={customerName} name='fullname' type='text' id="outlined-basic" label="Full Name" variant="outlined" style={{ width: "28rem" }} /></Grid>
+              <Grid><TextField onChange={mobileNumber} name="number" type='tel' id="outlined-basic" label="Mobile Number" variant="outlined" style={{ width: "28rem" }} /></Grid>
             </Grid>
-            <Grid item sx={{ backgroundColor: "#fff", borderRadius: "20px" }} xs={2} >
+            <Grid item sx={{ borderRadius: "20px"}} xs={2} >
               <Typography variant="h6" fontWeight="700" >
                 Date
               </Typography>
               <DatePick forValue={getDate} />
             </Grid>
-            <Grid sx={{}} item xs={2} >
-              <Typography variant="h6" fontWeight="700" >
+            <Grid sx={{}} item xs={2}>
+              <Typography variant="h6" fontWeight="700" sx={{width:'100px'}}>
                 Time Slot
               </Typography>
               <Timepick forValue={getTime} />
@@ -457,7 +459,7 @@ useEffect(() => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid sx={{ display: { xs: "flex" }, marginTop: "2%", justifyContent: "center", marginLeft: '-1.8%' }} container spacing={2}>
+      <Grid sx={{ display: { xs: "flex" }, marginTop: "2%", justifyContent: "space-evenly", flexWrap:'wrap' }} container spacing={2}>
         <Grid item xs={12} md={6} >
           <div>
             {Object.keys(hotel.menu).map((item, index) => {
@@ -526,10 +528,10 @@ useEffect(() => {
             })}
           </div>
         </Grid>
-        <Grid item xs={12} md={4} >
-          <Card sx={{ padding: "0% ", marginLeft: "6%", width: '505px', height: '700px', borderRadius: '20px', boxShadow: 0, display: "flex", flexDirection: "column" }}>
+        <Grid item xs={12} md={4}>
+          <Card sx={{ padding: "0% ", marginLeft: "0%", width: '505px', height: '700px', borderRadius: '20px', boxShadow: 0, display: "flex", flexDirection: "column" }}>
             <CardHeader
-              sx={{ backgroundColor: "#2A88DF", borderRadius: "20px", color: "white" }}
+              sx={{ backgroundColor: "#2A88DF", borderRadius: "20px", color: "white",width:'100%' }}
               title={
                 <Typography variant="h5" fontWeight="700" >
                   Order Summary
@@ -598,12 +600,12 @@ useEffect(() => {
               <Grid sx={{ color: "#282828", marginBottom: "2%" }} container >
                 <Grid xs={8}>
                   <Typography variant="h7" fontWeight="400" >
-                    Pay 20% to confirm your order. Discount will be done at the restaurent.
+                    Pay 20% to confirm your order. <br />Discount will be done at the restaurant.
                   </Typography>
                 </Grid>
                 <Grid sx={{ marginLeft: "auto", textAlign: "center" }} xs={4}>
                   <Link onClick={sendOrderDetails} >
-                    <MenuItem className='logsin_big' sx={{
+                    <MenuItem className='' sx={{
                       justifyContent: "center",
                       color: '#fff',
                       backgroundColor: "#2A88DF",
@@ -611,7 +613,6 @@ useEffect(() => {
                       padding: "8px 20px 8px 20px",
                       fontFamily: 'Jost',
                       fontWeight: '700',
-                      mr: '5.5%',
                       '&:hover': {
                         backgroundColor: '#2475bf',
                       }

@@ -15,7 +15,12 @@ const Hotellist=[
         openmin:0,
         closehr:21,
         closemin:0,
-        special:"Best Pick for You"
+        special:"Best Pick for You",
+        contact:"70152XXXXX",
+        direction:"https://goo.gl/maps/Gpbin39k2gYHNJmW9",
+        cuisine:"Gujarati, Punjabi, Kathiyawadi, Chinese",
+        type:"Fine dine",
+        costavg:"500 for 2 person"
 
     },
     {
