@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Input, Rating, Button, Link } from '@mui/material';
+import { Input, Rating, Button} from '@mui/material';
+import axios from "axios";
 
 function Reviews(){
+    const [review,setReview] = useState('')
+
+    const addreview = async () => {
+        const user = {
+
+        }
+        const data = {
+            userDetails:{
+                username:"",
+                userId:""
+            },
+            content:review
+        }
+        try {
+            const res = await axios.post('',user,data)
+            if(res){
+                console.log('data sent')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
     return(
         <>
         <style>
@@ -78,6 +103,8 @@ function Reviews(){
             <div className="write">
                 <h2 className="writearea">Write your experience here.</h2>
                 <Input
+                    value={review}
+                    onChange={(e)=>setReview(e.target.value)}
                     id="filled-multiline-static"
                     label="Review"
                     color="primary"
@@ -89,7 +116,7 @@ function Reviews(){
                     sx={{width:'100%', color:'white', marginTop:'30px'}}
                 />
             </div>
-            <Button variant="contained"><Link style={{color:'white',textDecoration:'none'}}>Submit</Link></Button>
+            <Button onClick={addreview} variant="contained" style={{color:'white',textDecoration:'none'}}>Submit</Button>
         </div>
         <Footer />
         </>

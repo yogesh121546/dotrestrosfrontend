@@ -15,6 +15,7 @@ import Container from '@mui/material/Container';
 // import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
+import axios from 'axios';
 // import Tooltip from '@mui/material/Tooltip';
 
 // import Divider from '@mui/material/Divider';
@@ -86,6 +87,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  // const userData  = localStorage.getItem(signedin);
+  // localStorage.setItem('signedin',userData);
+  
+  const [loggedIn, setLoggedIn] = React.useState(0);
 
 
   // the commented parts below are to show profile section of customer on nav bar.........dont touch right now
@@ -269,7 +274,7 @@ const Header = () => {
             '&:hover': {
               backgroundColor: '#257CCC',
             }
-          }} ><Link style={{ textDecoration: 'none', color: "#fff" }} to="https://dot-restros.onrender.com/auth/google" >Login/Signup</Link></MenuItem>
+          }} ><Link style={{ textDecoration: 'none', color: "#fff" }} to={loggedIn ? 'https://dot-restros.onrender.com/auth/logout' :"https://dot-restros.onrender.com/auth/google"} >{loggedIn ? "Sign out ":"Login"}</Link></MenuItem>
 
 
           <MenuItem className='logsin_small' sx={{
@@ -282,7 +287,7 @@ const Header = () => {
             '&:hover': {
               backgroundColor: '#2475bf',
             }
-          }} ><Link style={{ textDecoration: 'none', color: "#fff" }} to="https://dot-restros.onrender.com/auth/google" >Login</Link></MenuItem>
+          }} ><Link style={{ textDecoration: 'none', color: "#fff" }} to={loggedIn? 'https://dot-restros.onrender.com/auth/logout' :"https://dot-restros.onrender.com/auth/google"} >{loggedIn ? "Sign out ":"Login"}</Link></MenuItem>
 
 
 

@@ -32,10 +32,6 @@ function App() {
           <Route path='/hotelpage/:id' element={<Hotelpage />} />
         </Routes>
       </ScrollToTop>
-
-
-
-
     </>
   );
 }
