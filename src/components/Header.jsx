@@ -91,6 +91,21 @@ const Header = () => {
   // localStorage.setItem('signedin',userData);
   
   const [loggedIn, setLoggedIn] = React.useState(0);
+  React.useEffect( async()=>{
+    const data = await fetch("https://dot-restros.onrender.com/auth/status", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    const user = await data.json();
+    setLoggedIn(user.loggedIn);
+}, []);
+
+React.useEffect( async()=>{
+  console.log(loggedIn);
+}, [loggedIn]);
 
 
   // the commented parts below are to show profile section of customer on nav bar.........dont touch right now
