@@ -17,7 +17,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import axios from 'axios';
 // import Tooltip from '@mui/material/Tooltip';
-
+import backend_link from '../links'
+import { CheckCircle } from '@mui/icons-material';
 // import Divider from '@mui/material/Divider';
 // import AdbIcon from '@mui/icons-material/Adb';
 // const pages = ['Home', 'My Orders', 'About Us'];
@@ -28,7 +29,7 @@ const pages = [
   },
   {
     name: "My Orders",
-    to: "/"
+    to: "/myorders"
   },
   {
     name: "About Us",
@@ -90,9 +91,14 @@ const Header = () => {
   // const userData  = localStorage.getItem(signedin);
   // localStorage.setItem('signedin',userData);
   
+
+//  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
   const [loggedIn, setLoggedIn] = React.useState(0);
-  React.useEffect( async()=>{
-    const data = await fetch("https://dot-restros.onrender.com/auth/status", {
+  
+  const checkstatus = async()=>{
+    console.log('status clicked')
+    const data = await fetch(`${backend_link}/auth/status`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -101,11 +107,12 @@ const Header = () => {
     });
     const user = await data.json();
     setLoggedIn(user.loggedIn);
-}, []);
+}
 
-React.useEffect( async()=>{
-  console.log(loggedIn);
-}, [loggedIn]);
+React.useEffect(checkstatus , []);
+
+//  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
 
   // the commented parts below are to show profile section of customer on nav bar.........dont touch right now
@@ -129,7 +136,7 @@ React.useEffect( async()=>{
 
   // const loginFucn = async () => {
   //   try {
-  //     const response = await fetch("http://localhost:4000/auth/google", {
+  //     const response = await fetch(`${backend_link}/auth/google`, {
   //       method: "GET"
   //     })
   //     const data = await response.json();
@@ -289,7 +296,7 @@ React.useEffect( async()=>{
             '&:hover': {
               backgroundColor: '#257CCC',
             }
-          }} ><Link style={{ textDecoration: 'none', color: "#fff" }} to={loggedIn ? 'https://dot-restros.onrender.com/auth/logout' :"https://dot-restros.onrender.com/auth/google"} >{loggedIn ? "Sign out ":"Login"}</Link></MenuItem>
+          }} ><Link onClick={checkstatus} style={{ textDecoration: 'none', color: "#fff" }} to={loggedIn ? `${backend_link}/auth/logout` :`${backend_link}/auth/google`} >{loggedIn ? "Sign out ":"Login"}</Link></MenuItem>
 
 
           <MenuItem className='logsin_small' sx={{
@@ -302,7 +309,7 @@ React.useEffect( async()=>{
             '&:hover': {
               backgroundColor: '#2475bf',
             }
-          }} ><Link style={{ textDecoration: 'none', color: "#fff" }} to={loggedIn? 'https://dot-restros.onrender.com/auth/logout' :"https://dot-restros.onrender.com/auth/google"} >{loggedIn ? "Sign out ":"Login"}</Link></MenuItem>
+          }} ><Link onClick={checkstatus} style={{ textDecoration: 'none', color: "#fff" }} to={loggedIn? `${backend_link}/auth/logout` :`${backend_link}/auth/google`} >{loggedIn ? "Sign out ":"Login"}</Link></MenuItem>
 
 
 

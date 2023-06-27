@@ -12,6 +12,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import backend_link from '../links'
 
 import DatePick from './Datepick';
 import Timepick from './Timepick';
@@ -195,7 +196,7 @@ useEffect(() => {
     console.log(orderDetails)
     const sendData = async () => {
       try {
-        const response = await fetch("https://dot-restros.onrender.com/orders/send", {
+        const response = await fetch(`${backend_link}/orders/send`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
