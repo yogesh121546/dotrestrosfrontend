@@ -3,6 +3,7 @@
   "proxy": "https://127.0.0.1:4000",
   "private": true,
   "dependencies": {
+    "@coreui/react": "^4.8.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",

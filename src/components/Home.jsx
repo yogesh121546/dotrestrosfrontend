@@ -18,7 +18,7 @@ const Home = () => {
                     console.log(index)
                     return (
                         <Grid key={index} item lg={3} md={4} xs={12} sx={{ display: 'flex', justifyContent: 'center', marginBottom: "4rem" }} >
-                            <Link style={{ textDecoration: 'none' }} to={`/hotelpage/${val.id}`} ><Hotelcard name={val.name} location={val.location} discount={val.discount} rating={val.rating} special={val.special} contact={val.contact} direction={val.direction} cuisine={val.cuisine} type={val.type} costavg={val.costavg} />
+                            <Link style={{ textDecoration: 'none' }} to={`/hotelpage/${val.id}`} ><Hotelcard name={val.name} location={val.location} discount={val.discount} rating={val.rating} special={val.special} contact={val.contact} direction={val.direction} cuisine={val.cuisine} type={val.type} costavg={val.costavg} menulink={val.menulink} />
                             </Link></Grid>
                     )
                 })}

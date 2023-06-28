@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import Fab from '@mui/material/Fab';
 import { Link, useParams } from "react-router-dom";
 import MenuItem from '@mui/material/MenuItem';
+import { CCarousel,CCarouselItem,CImage } from '@coreui/react'
 // import dayjs from 'dayjs';
 
 import Card from '@mui/material/Card';
@@ -248,12 +249,17 @@ useEffect(() => {
 
           <Card sx={{ width: '55vw', minWidth: "600px", height: 'auto', borderRadius: '20px', boxShadow: 0 }}>
 
-            <CardMedia
-              component="img"
-              height="370px"
-              image={hotel.image}
-              alt="Paella dish"
-            />
+            <CCarousel controls>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src={hotel.image} alt="slide 1" />
+  </CCarouselItem>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src={hotel.image} alt="slide 2" />
+  </CCarouselItem>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src={hotel.image} alt="slide 3" />
+  </CCarouselItem>
+</CCarousel>
             <CardHeader
               sx={{ paddingBottom: 0 }}
 
@@ -308,7 +314,7 @@ useEffect(() => {
                     </Typography>
                   </Grid>
                   <Grid xs={5.1} sx={{paddingLeft:'33%'}}>
-                    <Button><Link style={{backgroundColor:'#2a88df',borderRadius:'10px',textDecoration:'none',color:'white',fontWeight:'bold',width:'60px',padding:'5px' , '&:hover':{backgroundColor:'#257ccc'}}} to={hotel.menu}>Menu</Link></Button>
+                    <Button><Link style={{backgroundColor:'#2a88df',borderRadius:'10px',textDecoration:'none',color:'white',fontWeight:'bold',width:'60px',padding:'5px' , '&:hover':{backgroundColor:'#257ccc'}}} to={hotel.menulink}>Menu</Link></Button>
                   </Grid>
                 </Grid>
               {/* </Grid> */}

@@ -20,8 +20,8 @@ const Hotellist=[
         direction:"https://goo.gl/maps/Gpbin39k2gYHNJmW9",
         cuisine:"Gujarati, Punjabi, Kathiyawadi, Chinese",
         type:"Fine dine",
-        costavg:"500 for 2 person",
-        menu:"https://drive.google.com/file/d/14_4xE0BP7PEJSCjZ3RsCGnopAHZvW7aU/view?usp=drive_link"
+        menulink:`https://drive.google.com/file/d/14_4xE0BP7PEJSCjZ3RsCGnopAHZvW7aU/view?usp=drive_link`,
+        costavg:"500 for 2 person"
 
     },
     {
