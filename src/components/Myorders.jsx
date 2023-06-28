@@ -26,14 +26,6 @@ const MyOrders = () => {
 // }, []);
 
 
-const { id } = useParams()
-
-const hotel = Hotellist.find((h) => {
-  return (
-    String(h.id) === id
-  );
-})
-
   const orderget = async()=>{
       const data = await fetch(`${backend_link}/user/profile`, {
         method: "GET",
@@ -43,8 +35,9 @@ const hotel = Hotellist.find((h) => {
         credentials: "include",
       });
       const user = await data.json();
-      setOrderList(user.orders);
-  };
+      // setOrderList(user.orders);
+      setOrderList(["Harikrushna","Joker","Aashirwad"])
+    }
 
   useEffect(()=>{
     orderget();
@@ -64,7 +57,7 @@ const hotel = Hotellist.find((h) => {
                     margin-bottom:80px;
                     margin-left:15%;
                     width:70%;
-                    height:22vh;
+                    height:170px;
                     border-radius:10px 0px 0px 10px;
                     display:flex;
                     justify-content:space-between;
@@ -177,11 +170,11 @@ const hotel = Hotellist.find((h) => {
           {/* <h1>{order.bookingDetails.time}</h1> */}
         <div className="maindiv">
             <div className="img">
-                {order.restaurant.code.image}
+                <img src="/images/harikrushna.jpeg" alt="" />
             </div>
             <div className="details">
                 <div className="info">
-                  <h3 className="name">{order.restaurant.name}</h3>
+                  <h3 className="name">{order}</h3>
                   <div className="test">
                     <div className="testf">
                       <span>4.5</span>
@@ -194,9 +187,9 @@ const hotel = Hotellist.find((h) => {
                   <h6 className="direction"><Link to="/" style={{textDecoration:'none', color:'#2a88df'}}>Get direction on map</Link></h6>
                 </div>
                 <div className="action">
-                    <button className="btn">Menu</button>
-                    <button className="btn">Add Review</button>
-                    <button className="btn">Cancel</button>
+                    <Link className="btn" to="/">Menu</Link>
+                    <Link className="btn" to={`/reviews`}>Add Review</Link>
+                    <Link className="btn" to={`${backend_link}/orders/cancel/${order._id}`}>Cancel</Link>
                 </div>
             </div>
         </div>

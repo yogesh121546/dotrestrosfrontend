@@ -33,6 +33,7 @@ import "../App.css"
 import Hotellist from "./Hotellist"
 import { useState } from 'react';
 import axios from 'axios'
+import { Button } from '@mui/material';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 5,
@@ -283,30 +284,34 @@ useEffect(() => {
 
             />
             <CardContent sx={{ paddingTop: 0 }}  >
-              <Grid container spacing={0} >
+              <Grid container spacing={0} sx={{marginTop:'10px'}}>
                 <Grid xs={6} >
                   <Typography variant="body2" color="text.secondary" fontWeight="700"  >
                     Contact-{hotel.contact}
                   </Typography>
                 </Grid>
-                <Grid sx={{ paddingLeft: "20%" }} xs={6} >
+                <Grid sx={{ paddingLeft: "21.5%" }} xs={6} >
                   <Typography variant="body2" color="text.secondary" fontWeight="700">
                     Flat <span style={{ color: "#2A88DF" }} >{hotel.discount}</span> off on the total bill
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid container >
-                <Grid container sx={{ marginTop: "1%", alignItems: "center" }} xs={6} >
-                  <Grid sx={{ display: "flex", alignItems: "center", marginRight: "1%" }} ><img src='/images/map.png' style={{ width: "25px", height: "25px " }} alt='cuisine logo' /></Grid>
+              {/* <Grid container > */}
+                <Grid container sx={{ marginTop: "1%", alignItems: "center",display:'flex' }}>
+                  <Grid sx={{ display: "flex", alignItems: "center", marginRight: "1%" }}>
+                    <img src='/images/map.png' style={{ width: "25px", height: "25px " }} alt='cuisine logo' />
+                  </Grid>
 
-                  <Grid>
+                  <Grid xs={6}>
                     <Typography variant="body2" color="text.secondary" >
                       <Link style={{textDecoration:'none', color:'inherit'}} to={hotel.direction}>Get directions on map</Link>
                     </Typography>
                   </Grid>
-
+                  <Grid xs={5.1} sx={{paddingLeft:'33%'}}>
+                    <Button><Link style={{backgroundColor:'#2a88df',borderRadius:'10px',textDecoration:'none',color:'white',fontWeight:'bold',width:'60px',padding:'5px' , '&:hover':{backgroundColor:'#257ccc'}}} to={hotel.menu}>Menu</Link></Button>
+                  </Grid>
                 </Grid>
-              </Grid>
+              {/* </Grid> */}
             </CardContent>
 
 
