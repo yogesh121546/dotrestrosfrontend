@@ -109,7 +109,7 @@ const Header = () => {
     setLoggedIn(user.loggedIn);
 }
 
-React.useEffect(checkstatus , []);
+React.useEffect(()=>{checkstatus()} , []);
 
 //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -296,7 +296,7 @@ React.useEffect(checkstatus , []);
             '&:hover': {
               backgroundColor: '#257CCC',
             }
-          }} ><Link onClick={checkstatus} style={{ textDecoration: 'none', color: "#fff" }} to={loggedIn ? `${backend_link}/auth/logout` :`${backend_link}/auth/google`} >{loggedIn ? "Sign out ":"Login/Signup"}</Link></MenuItem>
+          }} ><Link onClick={checkstatus} style={{ textDecoration: 'none', color: "#fff" }} to={loggedIn ? `${backend_link}/auth/logout` :`${backend_link}/auth/google`} >{loggedIn ? "Sign out":"Login/Signup"}</Link></MenuItem>
 
 
           <MenuItem className='logsin_small' sx={{
@@ -309,7 +309,7 @@ React.useEffect(checkstatus , []);
             '&:hover': {
               backgroundColor: '#2475bf',
             }
-          }} ><Link onClick={checkstatus} style={{ textDecoration: 'none', color: "#fff" }} to={loggedIn? `${backend_link}/auth/logout` :`${backend_link}/auth/google`} >{loggedIn ? "Sign out ":"Login"}</Link></MenuItem>
+          }} ><Link onClick={checkstatus} style={{ textDecoration: 'none', color: "#fff" }} to={loggedIn? `${backend_link}/auth/logout` :`${backend_link}/auth/google`} >{loggedIn ? `Sign out`:"Login"}</Link></MenuItem>
 
 
 

@@ -3,24 +3,52 @@ import Header from "./Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import backend_link from '../links'
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Rating } from "@mui/material";
 import Footer from "./Footer";
+import Hotellist from "./Hotellist"
+
+
 const MyOrders = () => {
   const [orderList, setOrderList] = useState([]);
   const [renderWindow, setRenderWindow] = useState(<></>);
-  useEffect(async () => {
-    // const data = await fetch(`${backend_link}/user/profile`, {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   credentials: "include",
-    // });
-    // const user = await data.json();
-    // setOrderList(user.orders);
-    setOrderList(["Harikrushna Restaurant","Joker Restaurant","Aashirwad Restaurant"]);
-}, []);
+//   useEffect(async () => {
+//     // const data = await fetch(`${backend_link}/user/profile`, {
+//     //   method: "GET",
+//     //   headers: {
+//     //     "Content-Type": "application/json",
+//     //   },
+//     //   credentials: "include",
+//     // });
+//     // const user = await data.json();
+//     // setOrderList(user.orders);
+//     setOrderList(["Harikrushna Restaurant","Joker Restaurant","Aashirwad Restaurant"]);
+// }, []);
+
+
+const { id } = useParams()
+
+const hotel = Hotellist.find((h) => {
+  return (
+    String(h.id) === id
+  );
+})
+
+  const orderget = async()=>{
+      const data = await fetch(`${backend_link}/user/profile`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const user = await data.json();
+      setOrderList(user.orders);
+  };
+
+  useEffect(()=>{
+    orderget();
+  },[]);
 
   useEffect(() => {
     console.log("Order List: ", orderList);
@@ -149,11 +177,11 @@ const MyOrders = () => {
           {/* <h1>{order.bookingDetails.time}</h1> */}
         <div className="maindiv">
             <div className="img">
-                <img src="images/harikrushna.jpeg" alt="" />
+                {order.restaurant.code.image}
             </div>
             <div className="details">
                 <div className="info">
-                  <h3 className="name">{order}</h3>
+                  <h3 className="name">{order.restaurant.name}</h3>
                   <div className="test">
                     <div className="testf">
                       <span>4.5</span>

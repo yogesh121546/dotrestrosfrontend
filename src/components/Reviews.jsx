@@ -5,29 +5,56 @@ import { Input, Rating, Button} from '@mui/material';
 import axios from "axios";
 
 function Reviews(){
-    const [review,setReview] = useState('')
+    const [review,setReview] = useState('');
+    const [rating,setRating] = useState({
+        overall:0,
+        staff: 0,
+        food: 0,
+        ambience: 0,
+        services: 0,
+    });
 
     const addreview = async () => {
-        const user = {
-
-        }
         const data = {
-            userDetails:{
-                username:"",
-                userId:""
-            },
-            content:review
-        }
+          restaurant: {
+            name: "Testing Review",
+            code: 3,
+          },
+          content: review,
+          ratings: {
+            overall: rating.overall,
+            staff: rating.staff,
+            food: rating.food,
+            ambience: rating.ambience,
+            services: rating.services,
+          },
+        };
         try {
-            const res = await axios.post('',user,data)
-            if(res){
-                console.log('data sent')
-            }
+          console.log("reviews reached here");
+          const res = await fetch("http://localhost:4000/reviews/create", {
+            method: "POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(data),
+            credentials: "include",
+          });
+          if (res) {
+            const reviewData = await res.json();
+            console.log("data sent", reviewData);
+          }
         } catch (error) {
-            console.log(error)
+          console.log(error);
         }
-
-    }
+        setReview('');
+        setRating({
+            overall:0,
+            staff: 0,
+            food: 0,
+            ambience: 0,
+            services: 0,
+        });
+      };
 
     return(
         <>
@@ -72,31 +99,31 @@ function Reviews(){
                 <div className="overall row">
                     <h5 className="tags">Overall</h5>
                     <div className="stars">
-                    <Rating size='large' name="half-rating" defaultValue={0} precision={1} sx={{fontSize:'50px','& .MuiRating-icon':{color:'#2a88df'}}}/>
+                    <Rating value={rating.overall} onChange={(e)=>setRating({...rating,overall:e.target.value})} size='large' name="half-rating" defaultValue={0} precision={1} sx={{fontSize:'50px','& .MuiRating-icon':{color:'#2a88df'}}} required/>
                     </div>
                 </div>
                 <div className="staff row">
                     <h5 className="tags">Staff</h5>
                     <div className="stars">
-                    <Rating size='large' name="half-rating" defaultValue={0} precision={1} sx={{fontSize:'50px','& .MuiRating-icon':{color:'#2a88df'}}}/>
+                    <Rating value={rating.staff} onChange={(e)=>setRating({...rating,staff:e.target.value})} size='large' name="half-rating" defaultValue={0} precision={1} sx={{fontSize:'50px','& .MuiRating-icon':{color:'#2a88df'}}} required/>
                     </div>
                 </div>
                 <div className="food row">
                     <h5 className="tags">Food</h5>
                     <div className="stars">
-                    <Rating size='large' name="half-rating" defaultValue={0} precision={1} sx={{fontSize:'50px','& .MuiRating-icon':{color:'#2a88df'}}}/>
+                    <Rating value={rating.food} onChange={(e)=>setRating({...rating,food:e.target.value})} size='large' name="half-rating" defaultValue={0} precision={1} sx={{fontSize:'50px','& .MuiRating-icon':{color:'#2a88df'}}} required/>
                     </div>
                 </div>
                 <div className="ambience row">
                     <h5 className="tags">Ambience</h5>
                     <div className="stars">
-                    <Rating size='large' name="half-rating" defaultValue={0} precision={1} sx={{fontSize:'50px','& .MuiRating-icon':{color:'#2a88df'}}}/>
+                    <Rating value={rating.ambience} onChange={(e)=>setRating({...rating,ambience:e.target.value})} size='large' name="half-rating" defaultValue={0} precision={1} sx={{fontSize:'50px','& .MuiRating-icon':{color:'#2a88df'}}} required/>
                     </div>
                 </div>
                 <div className="services row">
                     <h5 className="tags">Services</h5>
                     <div className="stars">
-                    <Rating size='large' name="half-rating" defaultValue={0} precision={1} sx={{fontSize:'50px','& .MuiRating-icon':{color:'#2a88df'}}}/>
+                    <Rating value={rating.services} onChange={(e)=>setRating({...rating,services:e.target.value})} size='large' name="half-rating" defaultValue={0} precision={1} sx={{fontSize:'50px','& .MuiRating-icon':{color:'#2a88df'}}} required/>
                     </div>
                 </div>
             </div>
@@ -114,6 +141,7 @@ function Reviews(){
                     defaultValue=""
                     variant="filled"
                     sx={{width:'100%', color:'white', marginTop:'30px'}}
+                    required
                 />
             </div>
             <Button onClick={addreview} variant="contained" style={{color:'white',textDecoration:'none'}}>Submit</Button>
