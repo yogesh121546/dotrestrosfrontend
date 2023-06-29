@@ -25,7 +25,7 @@ const Timepick = (props) => {
 
 
 
-            <TimePicker minTime={min} maxTime={max} onChange={callNext} label={'Select time'} />
+            <TimePicker sx={{minWidth:'330px'}} minTime={min} maxTime={max} onChange={callNext} label={'Select time'} />
 
 
         </LocalizationProvider>

@@ -22,7 +22,7 @@ const DatePick = (props) => {
 
 
       <DemoItem>
-        <DatePicker onChange={callNext} disablePast label={'Select Date'} views={['day']} format='DD/MM/YYYY' maxDate={currDate.add(7,'day')} />
+        <DatePicker sx={{minWidth:'330px',maxWidth:'330px'}} onChange={callNext} disablePast label={'Select Date'} views={['day']} format='DD/MM/YYYY' maxDate={currDate.add(7,'day')} />
       </DemoItem>
 
 

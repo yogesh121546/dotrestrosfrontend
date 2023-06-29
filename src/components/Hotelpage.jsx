@@ -247,31 +247,31 @@ useEffect(() => {
       <Grid sx={{ display: { xs: "flex" }, marginTop: "7%", justifyContent: "space-evenly", flexWrap:'wrap' }} container spacing={0}>
         <Grid sx={{}} item md={6} xs={12}>
 
-          <Card sx={{ width: '55vw', minWidth: "600px", height: 'auto', borderRadius: '20px', boxShadow: 0 }}>
+          <Card className='hpcarddiv' sx={{ width: '55vw', minWidth: "100%", maxWidth:'55vw' ,height: 'auto', borderRadius: '20px', boxShadow: 0 }}>
 
             <CCarousel controls>
-  <CCarouselItem>
-    <CImage className="d-block w-100" src={hotel.image} alt="slide 1" />
-  </CCarouselItem>
-  <CCarouselItem>
-    <CImage className="d-block w-100" src={hotel.image} alt="slide 2" />
-  </CCarouselItem>
-  <CCarouselItem>
-    <CImage className="d-block w-100" src={hotel.image} alt="slide 3" />
-  </CCarouselItem>
-</CCarousel>
+              <CCarouselItem>
+                <CImage className="d-block w-100" src={hotel.image} alt="slide 1" />
+              </CCarouselItem>
+              <CCarouselItem>
+                <CImage className="d-block w-100" src={hotel.image} alt="slide 2" />
+              </CCarouselItem>
+              <CCarouselItem>
+                <CImage className="d-block w-100" src={hotel.image} alt="slide 3" />
+              </CCarouselItem>
+            </CCarousel>
             <CardHeader
               sx={{ paddingBottom: 0 }}
 
               title={
                 <Grid container >
-                  <Grid sx={{}} xs={8} >
+                  <Grid sx={{}} xs={10} >
                     <Typography variant="h5" fontWeight="700" >
                       {hotel.name}
                     </Typography>
                   </Grid>
-                  <Grid sx={{ paddingLeft: "23%" }} xs={4} >
-                    <Fab sx={{ boxShadow: "none" }} color="primary" aria-label="add">
+                  <Grid sx={{ paddingLeft: "0%" }} xs={2} >
+                    <Fab sx={{ boxShadow: "none",float:'right' }} color="primary" aria-label="add">
                       <Typography variant="h7" fontWeight="700" fontSize="20px"  >
                         {hotel.rating}
                       </Typography>
@@ -291,30 +291,30 @@ useEffect(() => {
             />
             <CardContent sx={{ paddingTop: 0 }}  >
               <Grid container spacing={0} sx={{marginTop:'10px'}}>
-                <Grid xs={6} >
+                <Grid xs={5.3} >
                   <Typography variant="body2" color="text.secondary" fontWeight="700"  >
                     Contact-{hotel.contact}
                   </Typography>
                 </Grid>
-                <Grid sx={{ paddingLeft: "21.5%" }} xs={6} >
-                  <Typography variant="body2" color="text.secondary" fontWeight="700">
+                <Grid sx={{ paddingLeft: "0%" }} xs={6.7} >
+                  <Typography variant="body2" color="text.secondary" fontWeight="700" sx={{float:'right'}}>
                     Flat <span style={{ color: "#2A88DF" }} >{hotel.discount}</span> off on the total bill
                   </Typography>
                 </Grid>
               </Grid>
               {/* <Grid container > */}
                 <Grid container sx={{ marginTop: "1%", alignItems: "center",display:'flex' }}>
-                  <Grid sx={{ display: "flex", alignItems: "center", marginRight: "1%" }}>
+                  <Grid sx={{ display: "flex", alignItems: "center", marginRight: "0%" }} xs={0.5}>
                     <img src='/images/map.png' style={{ width: "25px", height: "25px " }} alt='cuisine logo' />
                   </Grid>
 
-                  <Grid xs={6}>
+                  <Grid xs={5.75}>
                     <Typography variant="body2" color="text.secondary" >
-                      <Link style={{textDecoration:'none', color:'inherit'}} to={hotel.direction}>Get directions on map</Link>
+                      <Link style={{textDecoration:'none', color:'inherit',paddingLeft:'12px'}} to={hotel.direction}>Get directions on map</Link>
                     </Typography>
                   </Grid>
-                  <Grid xs={5.1} sx={{paddingLeft:'33%'}}>
-                    <Button><Link style={{backgroundColor:'#2a88df',borderRadius:'10px',textDecoration:'none',color:'white',fontWeight:'bold',width:'60px',padding:'5px' , '&:hover':{backgroundColor:'#257ccc'}}} to={hotel.menulink}>Menu</Link></Button>
+                  <Grid xs={5.75} sx={{paddingLeft:'25%'}}>
+                    <Button sx={{float:'right',padding:'0px'}}><Link style={{backgroundColor:'#2a88df',borderRadius:'10px',textDecoration:'none',color:'white',fontWeight:'bold',width:'60px',padding:'5px' , '&:hover':{backgroundColor:'#257ccc'}}} to={hotel.menulink}>Menu</Link></Button>
                   </Grid>
                 </Grid>
               {/* </Grid> */}
@@ -324,8 +324,8 @@ useEffect(() => {
           </Card>
 
         </Grid>
-        <Grid item md={4} xs={12}>
-          <Card sx={{ paddingLeft: "0%", marginLeft: "6%", width: '505px', height: '525px', borderRadius: '20px', boxShadow: 0, backgroundColor:'white' }}>
+        <Grid item md={4} xs={12} sx={{paddingLeft:'0px'}}>
+          <Card sx={{ paddingLeft: "0%", marginLeft: "0%", width: '40vw',minWidth: "100%", maxWidth:'40vw', height: '525px', borderRadius: '20px', boxShadow: 0, backgroundColor:'white' }}>
             <CardHeader
               sx={{ marginTop: "0%", paddingBottom: 0 }}
               title={
@@ -345,7 +345,7 @@ useEffect(() => {
               }
             />
             <CardHeader
-              sx={{ marginTop: "5%", paddingBottom: 0 }}
+              sx={{ marginTop: "10%", paddingBottom: 0 }}
               title={
                 <Grid container sx={{ alignItems: "center" }} >
                   <Grid sx={{ display: "flex", alignItems: "center", marginRight: "1%" }} ><img src='/images/type.png' style={{ width: "30px", height: "30px " }} alt='cuisine logo' /></Grid>
@@ -363,7 +363,7 @@ useEffect(() => {
               }
             />
             <CardHeader
-              sx={{ marginTop: "5%", paddingBottom: 0 }}
+              sx={{ marginTop: "10%", paddingBottom: 0 }}
 
               title={
                 <Grid container sx={{ alignItems: "center" }} >
@@ -414,7 +414,7 @@ useEffect(() => {
               }
             />
             <CardHeader
-              sx={{ marginTop: "5%", paddingBottom: 0 }}
+              sx={{ marginTop: "10%", paddingBottom: 0 }}
               title={
                 <Grid container sx={{ alignItems: "center" }} >
                   <Grid sx={{ display: "flex", alignItems: "center", marginRight: "1%" }} ><img src='/images/type.png' style={{ width: "30px", height: "30px " }} alt='cuisine logo' /></Grid>
@@ -437,39 +437,26 @@ useEffect(() => {
       </Grid>
 
 
-      <Grid sx={{ marginTop: "2%", justifyContent: "space-evenly", marginLeft: { xs: "3%", md: "0%", minWidth: "500px" }, marginRight:'0px' }} container  >
-        <Grid sx={{ backgroundColor: "#fff", borderRadius: "20px" }} >
-          <Grid
-            container
-            display="flex"
-            justifyContent="space-between"
-            flexWrap='wrap'
-            sx={{
-              '& > :not(style)': { m: 6.6, width: '40ch' },
-            }}
-            autoComplete="off"
-          >
-            <Grid item xs={12} md={5}>
+      <Grid className='formdiv' sx={{width: '100%', minWidth: "100%", marginTop: "2%",display:'flex',flexWrap:'wrap', justifyContent: "space-evenly" }} container  >
+            <Grid className='toset' item>
               <Grid><Typography item sx={{}} variant="h6" fontWeight="700" >
                 Booking Details
               </Typography></Grid>
-              <Grid style={{ marginBottom: "2rem" }}><TextField onChange={customerName} name='fullname' type='text' id="outlined-basic" label="Full Name" variant="outlined" style={{ width: "28rem" }} /></Grid>
-              <Grid><TextField onChange={mobileNumber} name="number" type='tel' id="outlined-basic" label="Mobile Number" variant="outlined" style={{ width: "28rem" }} /></Grid>
+              <Grid style={{ marginBottom: "2rem" }}><TextField onChange={customerName} name='fullname' type='text' id="outlined-basic" label="Full Name" variant="outlined" style={{ width: "330px" }} /></Grid>
+              <Grid><TextField onChange={mobileNumber} name="number" type='tel' id="outlined-basic" label="Mobile Number" variant="outlined" style={{ width: "330px" }} /></Grid>
             </Grid>
-            <Grid item sx={{ borderRadius: "20px"}} xs={2} >
-              <Typography variant="h6" fontWeight="700" >
+            <Grid className='toset' item sx={{ borderRadius: "20px"}} >
+              <Typography variant="h6" fontWeight="700">
                 Date
               </Typography>
               <DatePick forValue={getDate} />
             </Grid>
-            <Grid sx={{}} item xs={2}>
-              <Typography variant="h6" fontWeight="700" sx={{width:'100px'}}>
+            <Grid className='toset' item>
+              <Typography variant="h6" fontWeight="700">
                 Time Slot
               </Typography>
-              <Timepick forValue={getTime} />
+              <Timepick sx={{minWidth:'372px'}} forValue={getTime} />
             </Grid>
-          </Grid>
-        </Grid>
       </Grid>
       <Grid sx={{ display: { xs: "flex" }, marginTop: "2%", justifyContent: "space-evenly", flexWrap:'wrap' }} container spacing={2}>
         <Grid item xs={12} md={6} >
@@ -541,7 +528,7 @@ useEffect(() => {
           </div>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Card sx={{ padding: "0% ", marginLeft: "0%", width: '505px', height: '700px', borderRadius: '20px', boxShadow: 0, display: "flex", flexDirection: "column" }}>
+          <Card sx={{ padding: "0% ", marginLeft: "0%", width: '100%', height: '700px', borderRadius: '20px', boxShadow: 0, display: "flex", flexDirection: "column" }}>
             <CardHeader
               sx={{ backgroundColor: "#2A88DF", borderRadius: "20px", color: "white",width:'100%' }}
               title={
@@ -635,10 +622,10 @@ useEffect(() => {
           </Card>
         </Grid>
       </Grid>
-      <Grid container sx={{ display: { xs: "flex" }, marginTop: "5%", justifyContent: "center", marginLeft: { xs: "3%", md: "-1.6%" } }} spacing={0} >
+      <Grid container sx={{ display: { xs: "flex" }, marginTop: "5%", justifyContent: "center", marginLeft: { xs: "0%", md: "0%" } }} spacing={0} >
         <Grid item xs={12} md={6} >
-          <Card sx={{ width: 'auto', minWidth: "500px", height: 'auto', borderRadius: '20px', boxShadow: 0 }}>
-            <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", marginLeft: "2%" }}
+          <Card sx={{ width: 'auto', minWidth: "100%", height: 'auto', borderRadius: '20px', boxShadow: 0 }}>
+            <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", marginLeft: "0%" }}
               title={
                 <Grid container >
                   <Typography variant="h5" fontWeight="700" >
@@ -663,7 +650,7 @@ useEffect(() => {
             <CardContent>
               <Card sx={{ boxShadow: "none" }} >
                 <CardHeader
-                  sx={{ padding: '0 0 0 2%' }}
+                  sx={{ padding: '0 0 0 0%' }}
                   avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="avatar">
                       A
@@ -675,13 +662,13 @@ useEffect(() => {
                     </Typography>
                   }
                 />
-                <CardContent sx={{ padding: '0 0 0 2%', marginLeft: "8%" }} >
+                <CardContent sx={{ padding: '0 0 0 0%', marginLeft: "8%" }} >
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam aliquid dolor at molestias. Consequuntur, necessitatibus labore dicta recusandae deserunt ut tenetur aperiam ducimus ratione excepturi praesentium totam perspiciatis similique minus dolor autem a assumenda nostrum aliquid repudiandae iste obcaecati nemo modi. Ad reiciendis mollitia quis porro ullam, molestiae nobis officia.
                 </CardContent>
               </Card>
               <Card sx={{ boxShadow: "none" }} >
                 <CardHeader
-                  sx={{ padding: '0 0 0 2%' }}
+                  sx={{ padding: '0 0 0 0%' }}
                   avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="avatar">
                       H
@@ -693,7 +680,7 @@ useEffect(() => {
                     </Typography>
                   }
                 />
-                <CardContent sx={{ padding: '0 0 0 2%', marginLeft: "8%" }} >
+                <CardContent sx={{ padding: '0 0 0 0%', marginLeft: "8%" }} >
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam aliquid dolor at molestias. Consequuntur, necessitatibus labore dicta recusandae deserunt ut tenetur aperiam ducimus ratione excepturi praesentium totam perspiciatis similique minus dolor autem a assumenda nostrum aliquid repudiandae iste obcaecati nemo modi. Ad reiciendis mollitia quis porro ullam, molestiae nobis officia.
                 </CardContent>
               </Card>
@@ -701,87 +688,87 @@ useEffect(() => {
           </Card>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Card sx={{ paddingLeft: "%", marginLeft: "10%", width: '505px', height: '470px', borderRadius: '20px', boxShadow: 0 }} >
+          <Card sx={{ paddingLeft: "0%", marginLeft: "0%", width: '100%', height: '470px', borderRadius: '20px', boxShadow: 0 }} >
             <Card sx={{ boxShadow: 0 }} >
               <CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 3%" }}
+                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 0%" }}
                   title={
                     <Typography variant="h7" fontWeight="700" >
                       5 star
                     </Typography>
                   }
                 />
-                <CardContent sx={{ padding: "0px 0px 0px 3.5%" }} >
+                <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
                   <BorderLinearProgress variant="determinate" value={33} />
                 </CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 3%" }}
+                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 0%" }}
                   title={
                     <Typography variant="h7" fontWeight="700" >
                       4 star
                     </Typography>
                   }
                 />
-                <CardContent sx={{ padding: "0px 0px 0px 3.5%" }} >
+                <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
                   <BorderLinearProgress variant="determinate" value={30} />
                 </CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 3%" }}
+                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 0%" }}
                   title={
                     <Typography variant="h7" fontWeight="700" >
                       3 star
                     </Typography>
                   }
                 />
-                <CardContent sx={{ padding: "0px 0px 0px 3.5%" }} >
+                <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
                   <BorderLinearProgress variant="determinate" value={20} />
                 </CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 3%" }}
+                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 0%" }}
                   title={
                     <Typography variant="h7" fontWeight="700" >
                       2 star
                     </Typography>
                   }
                 />
-                <CardContent sx={{ padding: "0px 0px 0px 3.5%" }} >
+                <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
                   <BorderLinearProgress variant="determinate" value={50} />
                 </CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "10% 0 2% 3%" }}
+                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "10% 0 2% 0%" }}
                   title={
                     <Typography variant="h7" fontWeight="700" >
                       Staff
                     </Typography>
                   }
                 />
-                <CardContent sx={{ padding: "0px 0px 0px 3.5%" }} >
+                <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
                   <BorderLinearProgress variant="determinate" value={10} />
                 </CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 3%" }}
+                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 0%" }}
                   title={
                     <Typography variant="h7" fontWeight="700" >
                       Food
                     </Typography>
                   }
                 />
-                <CardContent sx={{ padding: "0px 0px 0px 3.5%" }} >
+                <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
                   <BorderLinearProgress variant="determinate" value={40} />
                 </CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 3%" }}
+                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 0%" }}
                   title={
                     <Typography variant="h7" fontWeight="700" >
                       Ambience
                     </Typography>
                   }
                 />
-                <CardContent sx={{ padding: "0px 0px 0px 3.5%" }} >
+                <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
                   <BorderLinearProgress variant="determinate" value={45} />
                 </CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 3%" }}
+                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 0%" }}
                   title={
                     <Typography variant="h7" fontWeight="700" >
                       Services
                     </Typography>
                   }
                 />
-                <CardContent sx={{ padding: "0px 0px 0px 3.5%" }} >
+                <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
                   <BorderLinearProgress variant="determinate" value={8} />
                 </CardContent>
               </CardContent>

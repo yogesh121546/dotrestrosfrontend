@@ -6,6 +6,10 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+html,body{
+  overflow-x:hidden;
+}
   
 body{
   background-color: #f2f2f2;

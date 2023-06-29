@@ -78,7 +78,7 @@ function Contactus(){
                 <div className="instagram hvr"><span className="clr">Instagram -</span> @dot_restros</div>
                 </div>
                 <div className="address">
-                <span className="clr">Address -</span>Near Dada Bhagwan Complex <br /> Kamrej Char Rasta, Surat, Gujarat <br />
+                <span className="clr">Address -</span>Kamrej Char Rasta, Surat, Gujarat <br />
                 <span className="clr">Pin code -</span> 394185
                 </div>
                 <div className="msg">

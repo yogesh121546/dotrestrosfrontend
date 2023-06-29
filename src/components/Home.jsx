@@ -12,7 +12,7 @@ const Home = () => {
         <>
             <Header />
             <Flyer />
-            <h2 style={{ marginLeft: '1.5%', marginTop: '30px' }} >Best Rated</h2>
+            <h2 className="givemargin" style={{ marginLeft: '1.5%', marginTop: '30px' }} >Places in Surat</h2>
             <Grid sx={{ marginLeft: "0%", MarginRight: "0%", marginTop: '20px', justifyContent: 'center' }} container spacing={0}>
                 {Hotellist.map((val, index) => {
                     console.log(index)
