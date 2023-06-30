@@ -4,7 +4,7 @@ const Hotellist=[
         name:"Harikrushna Restaurant",
         location:"Kamrej, Surat",
         image:"/images/harikrushna.jpeg",
-        discount:"10%",
+        discount:"15%",
         menu:{
             Kaju:{"Kaju butter":190,"Kaju chutiya":120},
             Paneer:{"Kadhai paneer":170,"paneer punjabi":100},
@@ -29,7 +29,7 @@ const Hotellist=[
         name:"Joker",
         location:"Kamrej, Surat",
         image:"/images/harikrushna.jpeg",
-        discount:"5%",
+        discount:"15%",
         rating:4.1,
         menu:{
             Kaju:{"Kaju butter":190,"Kaju chutiya":120},
@@ -52,7 +52,7 @@ const Hotellist=[
         name:"Mamaji dabeli wale",
         location:"Kamrej, Surat",
         image:"/images/harikrushna.jpeg",
-        discount:"7%",
+        discount:"10%",
         rating:4.3
     },
     {
@@ -60,7 +60,7 @@ const Hotellist=[
         name:"Khao gali",
         location:"Kamrej, Surat",
         image:"/images/harikrushna.jpeg",
-        discount:"3%",
+        discount:"10%",
         rating:3.7
     },
     {
@@ -68,7 +68,7 @@ const Hotellist=[
         name:"Bansari",
         location:"swami k pass, Surat",
         image:"/images/harikrushna.jpeg",
-        discount:"2%",
+        discount:"20%",
         rating:1.7
     },
     {
@@ -76,7 +76,7 @@ const Hotellist=[
         name:"Dhyey fafda",
         location:"Dada bhagwan complex, Surat",
         image:"/images/harikrushna.jpeg",
-        discount:"8%",
+        discount:"15%",
         rating:3.7
     }
 ]
