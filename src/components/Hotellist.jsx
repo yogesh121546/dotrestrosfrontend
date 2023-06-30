@@ -29,7 +29,7 @@ const Hotellist=[
         name:"Joker",
         location:"Kamrej, Surat",
         image:"/images/harikrushna.jpeg",
-        discount:"15%",
+        discount:"20%",
         rating:4.1,
         menu:{
             Kaju:{"Kaju butter":190,"Kaju chutiya":120},
