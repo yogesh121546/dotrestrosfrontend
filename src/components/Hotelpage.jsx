@@ -249,7 +249,7 @@ useEffect(() => {
 
           <Card className='hpcarddiv' sx={{ width: '55vw', minWidth: "100%", maxWidth:'55vw' ,height: 'auto', borderRadius: '20px', boxShadow: 0 }}>
 
-            <CCarousel controls>
+            <CCarousel controls interval={2000}>
               <CCarouselItem>
                 <CImage className="d-block w-100" src={hotel.image} alt="slide 1" />
               </CCarouselItem>
@@ -458,7 +458,7 @@ useEffect(() => {
               <Timepick sx={{minWidth:'372px'}} forValue={getTime} />
             </Grid>
       </Grid>
-      <Grid sx={{ display: { xs: "flex" }, marginTop: "2%", justifyContent: "space-evenly", flexWrap:'wrap' }} container spacing={2}>
+      <Grid sx={{ display: { xs: "flex" }, marginTop: "2%", justifyContent: "space-evenly", flexWrap:'wrap',padding:'0px 15px' }} container spacing={2}>
         <Grid item xs={12} md={6} >
           <div>
             {Object.keys(hotel.menu).map((item, index) => {

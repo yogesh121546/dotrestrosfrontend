@@ -84,7 +84,12 @@ function Reviews(){
             }
 
             .write{
-                width:500px;
+                width:100%;
+            }
+            @media (max-width:950px){
+                .writebox{
+                    width:90%;
+                }
             }
 
             `}
@@ -130,6 +135,7 @@ function Reviews(){
             <div className="write">
                 <h2 className="writearea">Write your experience here.</h2>
                 <Input
+                    className="writebox"
                     value={review}
                     onChange={(e)=>setReview(e.target.value)}
                     id="filled-multiline-static"
@@ -140,7 +146,7 @@ function Reviews(){
                     rows={6}
                     defaultValue=""
                     variant="filled"
-                    sx={{width:'100%', color:'white', marginTop:'30px'}}
+                    sx={{width:'40%', color:'white', marginTop:'30px'}}
                     required
                 />
             </div>

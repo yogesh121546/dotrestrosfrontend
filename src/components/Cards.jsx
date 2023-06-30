@@ -49,7 +49,7 @@ const Hotelcard=(props)=> {
         title={
         <Grid container sx={{height:'30px'}}>
           <Grid sx={{}} xs={8} >
-            <Typography variant="h6" fontWeight="700" sx={{width:'300px',fontSize:'20px'}}>
+            <Typography variant="h6" fontWeight="700" sx={{width:'300px',fontSize:'18px'}}>
               {props.name}
             </Typography>
           </Grid>

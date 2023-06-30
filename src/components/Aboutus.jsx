@@ -79,7 +79,7 @@ html,body{
   padding-top:20px;
 }
 .head2{
-  margin: 4rem 0;
+  margin: 4rem 1rem;
   font-weight: 400;
   font-size:2.25vw;
   letter-spacing:2px;

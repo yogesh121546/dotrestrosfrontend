@@ -8,8 +8,8 @@ function Privacy(){
             <style>
                 {`
                     .maindiv{
-                        margin:6rem 8rem;
-                        font-size:20px;
+                        margin:8% 8%;
+                        font-size:1.2rem;
                         text-align:justify;
                     }
                     .h3{
@@ -18,6 +18,11 @@ function Privacy(){
                     }
                     .title{
                         display:inline-block;
+                    }
+                    @media (max-width:700px){
+                        .maindiv{
+                            margin-top:20%;
+                        }
                     }
                 `}
             </style>
