@@ -19,6 +19,7 @@ import axios from 'axios';
 // import Tooltip from '@mui/material/Tooltip';
 import backend_link from '../links'
 import { CheckCircle } from '@mui/icons-material';
+import zIndex from '@mui/material/styles/zIndex';
 // import Divider from '@mui/material/Divider';
 // import AdbIcon from '@mui/icons-material/Adb';
 // const pages = ['Home', 'My Orders', 'About Us'];
@@ -180,7 +181,7 @@ React.useEffect(()=>{checkstatus()} , []);
 
 
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }}}>
             <IconButton
               size="large"
               aria-label="account of current user"

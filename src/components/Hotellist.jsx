@@ -6,9 +6,9 @@ const Hotellist=[
         image:"/images/harikrushna.jpeg",
         discount:"15%",
         menu:{
-            Kaju:{"Kaju butter":190,"Kaju chutiya":120},
-            Paneer:{"Kadhai paneer":170,"paneer punjabi":100},
-            chicken:{"chicken do pyaza":500,"grilled chicken":210,"hyderabadi biryani":400}
+            Kaju:{"Kaju Butter":190,"Kaju Butter Masala":120},
+            Paneer:{"Kadhai Paneer":170,"Paneer Punjabi":100},
+            Dal:{"Dal Fry":180,"Dal Tadka":170,"Dal Makhani":170}
         },
         rating:4.5,
         openhr:11,
@@ -32,9 +32,9 @@ const Hotellist=[
         discount:"20%",
         rating:4.1,
         menu:{
-            Kaju:{"Kaju butter":190,"Kaju chutiya":120},
-            Paneer:{"Kadhai paneer":170,"paneer punjabi":100},
-            chicken:{"chicken do pyaza":500,"grilled chicken":210,"hyderabadi biryani":400}
+            Kaju:{"Kaju Butter":190,"Kaju Butter Masala":120},
+            Paneer:{"Kadhai Paneer":170,"Paneer Punjabi":100},
+            Dal:{"Dal Fry":180,"Dal Tadka":170,"Dal Makhani":170}
         },
         openhr:11,
         openmin:0,

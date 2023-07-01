@@ -599,11 +599,11 @@ useEffect(() => {
               <Grid sx={{ color: "#282828", marginBottom: "2%" }} container >
                 <Grid xs={8}>
                   <Typography variant="h7" fontWeight="400" >
-                    Pay 20% to confirm your order. <br />Discount will be done at the restaurant.
+                    Pay 20% to confirm your order. <br />Discount will be done at restaurant.
                   </Typography>
                 </Grid>
                 <Grid sx={{ marginLeft: "auto", textAlign: "center" }} xs={4}>
-                  <Link onClick={sendOrderDetails} >
+                  <Link onClick={sendOrderDetails} style={{textDecoration:'none'}}>
                     <MenuItem className='' sx={{
                       justifyContent: "center",
                       color: '#fff',
