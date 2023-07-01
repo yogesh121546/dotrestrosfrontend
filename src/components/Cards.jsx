@@ -41,7 +41,7 @@ const Hotelcard=(props)=> {
       <CardMedia
         component="img"
         height="210px"
-        image="./images/harikrushna.jpeg"
+        image={props.image}
         alt="Paella dish"
       />
       <CardHeader sx={{padding:'7px',paddingBottom:'0px',paddingLeft:'15px', fontSize:'15px'}}

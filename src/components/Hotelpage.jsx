@@ -33,7 +33,6 @@ import { red } from '@mui/material/colors';
 import "../App.css"
 import Hotellist from "./Hotellist"
 import { useState } from 'react';
-import axios from 'axios'
 import { Button } from '@mui/material';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -240,7 +239,6 @@ useEffect(() => {
     setExpanded(isExpanded ? panel : false);
   };
 
-
   return (
     <>
       <Header />
@@ -251,13 +249,28 @@ useEffect(() => {
 
             <CCarousel controls interval={2000}>
               <CCarouselItem>
-                <CImage className="d-block w-100" src={hotel.image} alt="slide 1" />
+                <CImage className="d-block w-100" src={hotel.image} alt="slide 1" style={{height:'520px' ,maxHeight:'72vw'}} />
               </CCarouselItem>
               <CCarouselItem>
-                <CImage className="d-block w-100" src={hotel.image} alt="slide 2" />
+                <CImage className="d-block w-100" src={hotel.image2} alt="slide 2" style={{height:'520px' ,maxHeight:'72vw'}} />
               </CCarouselItem>
               <CCarouselItem>
-                <CImage className="d-block w-100" src={hotel.image} alt="slide 3" />
+                <CImage className="d-block w-100" src={hotel.image3} alt="slide 3" style={{height:'520px' ,maxHeight:'72vw'}} />
+              </CCarouselItem>
+              <CCarouselItem>
+                <CImage className="d-block w-100" src={hotel.image4} alt="slide 4" style={{height:'520px' ,maxHeight:'72vw'}} />
+              </CCarouselItem>
+              <CCarouselItem>
+                <CImage className="d-block w-100" src={hotel.image5} alt="slide 5" style={{height:'520px' ,maxHeight:'72vw'}} />
+              </CCarouselItem>
+              <CCarouselItem>
+                <CImage className="d-block w-100" src={hotel.image6} alt="slide 6" style={{height:'520px' ,maxHeight:'72vw'}} />
+              </CCarouselItem>
+              <CCarouselItem>
+                <CImage className="d-block w-100" src={hotel.image7} alt="slide 7" style={{height:'520px' ,maxHeight:'72vw'}} />
+              </CCarouselItem>
+              <CCarouselItem>
+                <CImage className="d-block w-100" src={hotel.image8} alt="slide 8" style={{height:'520px' ,maxHeight:'72vw'}} />
               </CCarouselItem>
             </CCarousel>
             <CardHeader
