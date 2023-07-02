@@ -471,8 +471,8 @@ useEffect(() => {
               <Timepick sx={{minWidth:'372px'}} forValue={getTime} />
             </Grid>
       </Grid>
-      <Grid sx={{ display: { xs: "flex" }, marginTop: "2%", justifyContent: "space-evenly", flexWrap:'wrap',padding:'0px 15px' }} container spacing={2}>
-        <Grid item xs={12} md={6} >
+      <Grid sx={{ display: { xs: "flex" }, marginTop: "4%", justifyContent: "space-evenly", flexWrap:'wrap',padding:'0px 15px' }} container spacing={2}>
+        <Grid item xs={12} md={6} sx={{maxHeight:'700px',overflowY:'scroll', marginTop:'1%'}}>
           <div>
             {Object.keys(hotel.menu).map((item, index) => {
               const panel = "panel" + String(index + 1)
