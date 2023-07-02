@@ -27,6 +27,7 @@ const MyOrders = () => {
 
 
   const orderget = async()=>{
+    try {
       const data = await fetch(`${backend_link}/user/profile`, {
         method: "GET",
         headers: {
@@ -35,8 +36,12 @@ const MyOrders = () => {
         credentials: "include",
       });
       const user = await data.json();
-      // setOrderList(user.orders);
-      setOrderList(["Harikrushna","Joker","Aashirwad"])
+      setOrderList(user.orders);
+    } catch (error) {
+      console.log(error);
+    }
+      
+      // setOrderList(["Harikrushna","Joker","Aashirwad"])
     }
 
   useEffect(()=>{
@@ -44,11 +49,54 @@ const MyOrders = () => {
   },[]);
 
   useEffect(() => {
-    console.log("Order List: ", orderList);
+    
+
     const elements = orderList.map((order) => {
-      return (
-        <>
-        <style>
+      
+      const hotel = Hotellist.find((h) => {
+        return (
+          String(h.name) === order.restaurant.name
+        )
+      })
+        return (
+            <>
+            
+              {/* <h1>{order.bookingDetails.time}</h1> */}
+            <div className="maindiv">
+                <div className="img">
+                    <img src={hotel.image} alt="" />
+                </div>
+                <div className="details">
+                    <div className="info">
+                      <h3 className="name">{hotel.name}</h3>
+                      <div className="test">
+                        <div className="testf">
+                          <span>{hotel.rating}</span>
+                          <Rating name="read-only" sx={{color:'white'}} value={1} max={1} readOnly />
+                        </div>
+                      </div>
+                      <h5 className="address">{hotel.location}</h5>
+                      <h6 className="contact">{hotel.contact}</h6>
+                      <h6 className="offer">Flat <span className="per">{hotel.discount}</span> off on total bill</h6>
+                      <h6 className="direction"><Link to={hotel.direction} style={{textDecoration:'none', color:'#2a88df'}}>Get direction on map</Link></h6>
+                    </div>
+                    <div className="action">
+                        <Link className="btn" to={hotel.menulink}>Menu</Link>
+                        <Link className="btn" to={`/reviews`}>Add Review</Link>
+                        <Link className="btn" to={`${backend_link}/orders/cancel/${order._id}`}>Cancel</Link>
+                    </div>
+                </div>
+            </div>
+            </>
+          );
+      
+    });
+    setRenderWindow(elements);
+  }, [orderList]);
+
+  return (
+    <>
+    <style>
             {`
                 .maindiv{
                     border-top:2px solid #2a88df;
@@ -167,40 +215,6 @@ const MyOrders = () => {
                 }
             `}
         </style>
-          {/* <h1>{order.bookingDetails.time}</h1> */}
-        <div className="maindiv">
-            <div className="img">
-                <img src="/images/harikrushna.jpeg" alt="" />
-            </div>
-            <div className="details">
-                <div className="info">
-                  <h3 className="name">{order}</h3>
-                  <div className="test">
-                    <div className="testf">
-                      <span>4.5</span>
-                      <Rating name="read-only" sx={{color:'white'}} value={1} max={1} readOnly />
-                    </div>
-                  </div>
-                  <h5 className="address">Kamrej, Surat, Gujarat</h5>
-                  <h6 className="contact">Contact- 70152XXXXX</h6>
-                  <h6 className="offer">Flat <span className="per">10%</span> off on total bill</h6>
-                  <h6 className="direction"><Link to="/" style={{textDecoration:'none', color:'#2a88df'}}>Get direction on map</Link></h6>
-                </div>
-                <div className="action">
-                    <Link className="btn" to="/">Menu</Link>
-                    <Link className="btn" to={`/reviews`}>Add Review</Link>
-                    <Link className="btn" to={`${backend_link}/orders/cancel/${order._id}`}>Cancel</Link>
-                </div>
-            </div>
-        </div>
-        </>
-      );
-    });
-    setRenderWindow(elements);
-  }, [orderList]);
-
-  return (
-    <>
       <Header />
       {renderWindow}
       <Footer />

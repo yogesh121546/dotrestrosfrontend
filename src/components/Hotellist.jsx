@@ -12,7 +12,7 @@ const Hotellist=[
         image7:"/images/HarikrushnaKamrej/hk6.jpeg",
         image8:"/images/HarikrushnaKamrej/hk7.jpeg",
         discount:"10%",
-        special:"",
+        special:"Best Rated",
         contact:"9925899996",
         menu:{
             Soup:{"Tomato Soup":120,"Veg Manchow Soup":130,"Veg Hot & Sour Soup":130,"Swwet Corn Soup":135,"Lemon & Corriander Soup":145},
@@ -52,7 +52,7 @@ const Hotellist=[
         image7:"/images/LionKingKamrej/lk7.jpeg",
         image8:"/images/LionKingKamrej/lk8.jpeg",
         discount:"10%",
-        special:"",
+        special:"Premium Partner",
         contact:"9054001536",
         menu:{
             Soup:{"Veg Sweet Corn":90,"Lemon Corriander":90,"Hot & Shower":100,"Manchow":110,"Tomato":90,"Cream of Mushroom":120,"Brokly(Mix)":110,"Brant Garlic":100},
@@ -83,7 +83,7 @@ const Hotellist=[
     },
     {
         id:3,
-        name:"Joker",
+        name:"Dummy 1",
         location:"Kamrej, Surat",
         image:"/images/harikrushna.jpeg",
         discount:"20%",
@@ -106,7 +106,7 @@ const Hotellist=[
     },
     {
         id:4,
-        name:"Mamaji dabeli wale",
+        name:"Dummy 2",
         location:"Kamrej, Surat",
         image:"/images/harikrushna.jpeg",
         discount:"10%",
