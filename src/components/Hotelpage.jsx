@@ -352,7 +352,7 @@ useEffect(() => {
                 </Grid>
               }
               subheader={
-                <Typography sx={{ marginLeft: "30px" }} variant="h7" fontWeight="700" color="text.secondary"  >
+                <Typography sx={{ marginLeft: "36px" }} variant="h7" fontWeight="700" color="text.secondary"  >
                   {hotel.cuisine}
                 </Typography>
               }
@@ -370,7 +370,7 @@ useEffect(() => {
                 </Grid>
               }
               subheader={
-                <Typography sx={{ marginLeft: "30px" }} variant="h7" fontWeight="700" color="text.secondary"  >
+                <Typography sx={{ marginLeft: "36px" }} variant="h7" fontWeight="700" color="text.secondary"  >
                   {hotel.type}
                 </Typography>
               }
@@ -390,32 +390,32 @@ useEffect(() => {
               }
               subheader={
                 <Grid container sx={{ alignItems: "center" }}>
-                  <Grid container xs={6} sx={{ marginTop: "3%" }} >
-                    <Grid sx={{ display: "flex", alignItems: "center", marginRight: "3%", marginLeft: "30px" }} ><img src='/images/wifi.png' style={{ width: "25px", height: "25px " }} alt='cuisine logo' /></Grid>
+                  <Grid container xs={4} sx={{ marginTop: "3%" }} >
+                    <Grid sx={{ display: "flex", alignItems: "center", marginRight: "3%", marginLeft: "36px" }} ><img src='/images/wifi.png' style={{ width: "25px", height: "25px " }} alt='cuisine logo' /></Grid>
                     <Grid>
                       <Typography variant="h7" fontWeight="700" >
                         Wifi
                       </Typography>
                     </Grid>
                   </Grid>
-                  <Grid container xs={6} sx={{ marginTop: "3%" }}>
-                    <Grid sx={{ display: "flex", alignItems: "center", marginRight: "0%", marginLeft: "30px" }} ><img src='/images/ac.png' style={{ width: "25px", height: "25px " }} alt='cuisine logo' /></Grid>
+                  <Grid container xs={8} sx={{ marginTop: "3%" }}>
+                    <Grid sx={{ display: "flex", alignItems: "center", marginRight: "0%", marginLeft: "36px" }} ><img src='/images/ac.png' style={{ width: "25px", height: "25px " }} alt='cuisine logo' /></Grid>
                     <Grid>
                       <Typography variant="h7" fontWeight="700" >
                         Air Conditioned
                       </Typography>
                     </Grid>
                   </Grid>
-                  <Grid container xs={6} sx={{ marginTop: "3%" }}>
-                    <Grid sx={{ display: "flex", alignItems: "center", marginRight: "3%", marginLeft: "30px" }} ><img src='/images/car.png' style={{ width: "25px", height: "25px " }} alt='cuisine logo' /></Grid>
+                  <Grid container xs={4} sx={{ marginTop: "3%" }}>
+                    <Grid sx={{ display: "flex", alignItems: "center", marginRight: "3%", marginLeft: "36px" }} ><img src='/images/car.png' style={{ width: "25px", height: "25px " }} alt='cuisine logo' /></Grid>
                     <Grid>
                       <Typography variant="h7" fontWeight="700" >
                         Parking
                       </Typography>
                     </Grid>
                   </Grid>
-                  <Grid container xs={6} sx={{ marginTop: "3%" }}>
-                    <Grid sx={{ display: "flex", alignItems: "center", marginRight: "3%", marginLeft: "30px" }} ><img src='/images/serving.png' style={{ width: "25px", height: "25px " }} alt='cuisine logo' /></Grid>
+                  <Grid container xs={8} sx={{ marginTop: "3%" }}>
+                    <Grid sx={{ display: "flex", alignItems: "center", marginRight: "3%", marginLeft: "36px" }} ><img src='/images/serving.png' style={{ width: "25px", height: "25px " }} alt='cuisine logo' /></Grid>
                     <Grid>
                       <Typography variant="h7" fontWeight="700" >
                         Serving
@@ -440,7 +440,7 @@ useEffect(() => {
               }
               subheader={
 
-                <Typography sx={{ marginLeft: "30px" }} variant="h7" fontWeight="700" color="text.secondary"  >
+                <Typography sx={{ marginLeft: "36px" }} variant="h7" fontWeight="700" color="text.secondary"  >
                   {hotel.costavg}
                 </Typography>
               }

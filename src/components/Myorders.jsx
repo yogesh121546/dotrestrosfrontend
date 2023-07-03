@@ -98,14 +98,16 @@ const MyOrders = () => {
     <>
     <style>
             {`
+                .masterdiv{
+                  margin-bottom:90px;
+                }
                 .maindiv{
                     border-top:2px solid #2a88df;
                     border-bottom:2px solid #2a88df;
-                    margin-top:80px;
-                    margin-bottom:80px;
+                    margin-bottom:40px;
                     margin-left:15%;
                     width:70%;
-                    height:170px;
+                    height:190px;
                     border-radius:10px 0px 0px 10px;
                     display:flex;
                     justify-content:space-between;
@@ -176,6 +178,7 @@ const MyOrders = () => {
                     width:90%;
                     margin-left:5%;
                     border-top:0px;
+                    border-radius:10px;
                   }
                   .details{
                     flex-direction:column;
@@ -183,6 +186,7 @@ const MyOrders = () => {
                   .img{
                     width:100%;
                     height:50%;
+                    max-height:230px;
                   }
                   .details{
                     width:100%;
@@ -216,6 +220,7 @@ const MyOrders = () => {
             `}
         </style>
       <Header />
+      <div className="masterdiv"></div>
       {renderWindow}
       <Footer />
     </>

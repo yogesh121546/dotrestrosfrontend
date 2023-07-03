@@ -53,10 +53,15 @@ html,body{
 .btn1{
     color: #fff !important;
     border-color: #fff !important;
-    font-size:22px;
+    font-size:25px;
+    border-radius:30px;
+    padding:10px 15px;
+    transition:0.5s;
 }
 .btn:hover{
     border-color:  #2A88DF !important;
+    background-color: #2a88df;
+    border-radius:10px;
 }
 .img1{
   height: 120px;
@@ -619,12 +624,12 @@ html,body{
               <div className="col-md-3"></div>
               <div className="col-md-3">
                 <a href="#alink1">
-                  <button type="button" className="btn1 btn btn-outline-primary rounded-pill">Who we are?</button>
+                  <button type="button" className="btn1 btn btn-outline-primary">Who we are?</button>
                 </a>
               </div>
               <div className="col-md-3">
                 <a href="#alink1">
-                  <button type="button" className="btn1 btn  btn-outline-primary rounded-pill">Our Mission?</button>
+                  <button type="button" className="btn1 btn  btn-outline-primary">Our Mission?</button>
                 </a>
               </div>
               <div className="col-md-3"></div>
