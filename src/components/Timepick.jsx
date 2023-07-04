@@ -17,8 +17,8 @@ const Timepick = (props) => {
     const hotel = Hotellist.find((h) => {
         return String(h.id) === id
     })
-    const min = dayjs().set('hour', hotel.openhr).startOf('hour');
-    const max = dayjs().set('hour', hotel.closehr).startOf('hour');
+    const min = dayjs().set('hour',hotel.openhr).set('minute',hotel.openmin).startOf('minute');
+    const max = dayjs().set('hour',hotel.closehr).set('minute',hotel.closemin).startOf('minute');
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
