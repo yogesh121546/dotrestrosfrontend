@@ -28,7 +28,7 @@ function App() {
           <Route exact path='/guest' element={<Guest/>} />
           <Route exact path='/cancellation' element={<Cancellation/>} />
           <Route exact path='/contactus' element={<Contactus/>} />
-          <Route exact path='/reviews' element={<Reviews/>} />
+          <Route exact path='/reviews/:id' element={<Reviews/>} />
           <Route path='/hotelpage/:id' element={<Hotelpage />} />
         </Routes>
       </ScrollToTop>

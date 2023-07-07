@@ -22,8 +22,8 @@ const Footer = () => {
             margin-top:5%;
           }
           .fimg1{
-            width: 70%;
-            height: 50%;
+            width: 100%;
+            height: 53%;
           }
           @media only screen and (max-width: 900px) {
             .ftxt1{
@@ -72,14 +72,21 @@ const Footer = () => {
             }
           }
           @media only screen and (max-width: 450px) {
+            .maindiv{
+              display:flex;
+              flex-direction:column;
+              justify-content:space-evenly;
+              flex-wrap:wrap;
+              padding:20px 0px;
+            }
             .ftxt1{
-              font-size:8px;
+              font-size:1rem;
             }
             .ftxt2{
-              font-size:10px;
+              font-size:1.3rem;
             }
             .ftxt3{
-              font-size:5px;
+              font-size:0.5rem;
             }
             & svg{
               transform: scale(0.50);
@@ -88,16 +95,18 @@ const Footer = () => {
               height:30%;
               margin-left:4%;
             }
+            .maindiv{
+              flex-direction:column;
+            }
+            .g1{
+              width:60%;
+            }
           }
           `
         }
       </style>
-      <Box
-        sx={{ bgcolor: "#282828", color: "white", p: 3}}
-      >
-        <Grid container spacing={2}>
-          <Grid item xs={1}></Grid>
-          <Grid item xs={4}>
+      <div className="maindiv" style={{backgroundColor:'#282828',color:'white',paddingTop:'40px',display:'flex',justifyContent:'space-between',paddingLeft:'8%',paddingRight:'8%'}}>
+          <Grid className="g1" item sx={{width:'30%'}}>
             <img className='fimg1' src="/images/footlogo.png" alt="dotrestrosLogo" />
             <Box
               sx={{
@@ -110,34 +119,32 @@ const Footer = () => {
                 "& svg:hover": {
                   // color: "goldenrod",
                   color: "#2A88DF",
-                  transform: "translateX(5px)",
+                  transform: "scale(1.2)",
                   transition: "all 400ms",
                 },
               }}
             >
               {/* icons */}
-              <Grid container>
-                <Grid item xs={2.56}><Link style={{ textDecoration: "none", color:"white" }} to="https://www.instagram.com/dot_restros/"><InstagramIcon className="ficon1" /></Link></Grid>
-                <Grid item xs={2.56}><Link style={{ textDecoration: "none", color:"white" }} to="https://twitter.com/dot_restros"><TwitterIcon /></Link></Grid>
-                <Grid item xs={2.56}><Link style={{ textDecoration: "none", color:"white" }} to="https://www.linkedin.com/company/dot-restros"><LinkedInIcon /></Link></Grid>
-                <Grid item xs={2.56}><Link style={{ textDecoration: "none", color:"white" }} to="https://www.facebook.com/people/DoT-Restros/100093948343294/"><FacebookIcon /></Link></Grid>
+              <Grid container sx={{textAlign:'center'}}>
+                <Grid item sx={{textAlign:'center', width:'25%'}}><Link style={{ textDecoration: "none", color:"white", textAlign:'center' }} to="https://www.instagram.com/dot_restros/"><InstagramIcon sx={{marginRight:'0px'}} className="ficon1" /></Link></Grid>
+                <Grid item sx={{textAlign:'center', width:'25%'}}><Link style={{ textDecoration: "none", color:"white", textAlign:'center' }} to="https://twitter.com/dot_restros"><TwitterIcon sx={{marginRight:'0px'}} /></Link></Grid>
+                <Grid item sx={{textAlign:'center', width:'25%'}}><Link style={{ textDecoration: "none", color:"white", textAlign:'center' }} to="https://www.linkedin.com/company/dot-restros"><LinkedInIcon sx={{marginRight:'0px'}} /></Link></Grid>
+                <Grid item sx={{textAlign:'center', width:'25%'}}><Link style={{ textDecoration: "none", color:"white", textAlign:'center' }} to="https://www.facebook.com/people/DoT-Restros/100093948343294/"><FacebookIcon sx={{marginRight:'0px'}} /></Link></Grid>
               </Grid>
-              <Typography className="ftxt3">
+              <Typography className="ftxt3" sx={{textAlign:'center'}}>
                 &copy; All Rights Reserved by DoT Restros 2023
               </Typography>
 
             </Box>
 
           </Grid>
-          <Grid item xs={1}></Grid>
-          <Grid item xs={6}>
-            <Grid container sx={{ textAlign: "left" }}>
-              <Grid item xs={6} >
+              <Grid item>
                 <Stack className="ftxt2" sx={{
                   color: "#2A88DF",
                   fontWeight: "bold",
                   fontSize: "20px",
                   paddingBottom: "5px",
+                  marginBottom:'10px',
                 }} spacing={4}>
                   COMPANY
                 </Stack>
@@ -147,8 +154,8 @@ const Footer = () => {
                 <Link style={{ textDecoration: "none" }} to="/cancellation" ><Grid className="ftxt1">Cancellation Policy</Grid></Link>
 
               </Grid>
-              <Grid item xs={6}>
-                <Stack className="ftxt2" sx={{ color: "#2A88DF", fontWeight: "bold", fontSize: "20px", paddingBottom: "5px" }} spacing={2}>
+              <Grid item>
+                <Stack className="ftxt2" sx={{ color: "#2A88DF", fontWeight: "bold", fontSize: "20px", paddingBottom: "5px",marginBottom:'10px' }} spacing={2}>
                   QUICK LINKS
                 </Stack>
                 <Link style={{ textDecoration: "none" }} to="/" ><Grid className="ftxt1">Home</Grid></Link>
@@ -156,12 +163,7 @@ const Footer = () => {
                 <Link style={{ textDecoration: "none" }} to="/aboutus" ><Grid className="ftxt1">About Us</Grid></Link>
                 <Link style={{ textDecoration: "none" }} to="/contactus" ><Grid className="ftxt1">Contact Us</Grid></Link>
               </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-
-
-      </Box>
+      </div>
     </>
   );
 };

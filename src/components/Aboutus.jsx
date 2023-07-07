@@ -624,12 +624,12 @@ html,body{
               <div className="col-md-3"></div>
               <div className="col-md-3">
                 <a href="#alink1">
-                  <button type="button" className="btn1 btn btn-outline-primary">Who we are?</button>
+                  <button type="button" className="btn1 btn btn-outline-primary">Who are we?</button>
                 </a>
               </div>
               <div className="col-md-3">
                 <a href="#alink1">
-                  <button type="button" className="btn1 btn  btn-outline-primary">Our Mission?</button>
+                  <button type="button" className="btn1 btn  btn-outline-primary">Our Mission</button>
                 </a>
               </div>
               <div className="col-md-3"></div>
@@ -682,17 +682,17 @@ html,body{
         </div>
       </div>
       <div style={{ margin: "40px" }}>
-        <h1 className="head3">Who we are?</h1>
+        <h1 className="head3">Who are we?</h1>
         <p className="wwa">
           DoT Restros is a table reservation and pre-ordering platform launched in 2023. We connect restaurants and customers through our platform, the customers can use our services to reserve their table at our partner restaurants and pre-order their meal to save their time. Providing amazing offers, and training employees at our partner restaurants to provide our customers with the best services they can have in budget. Customers can also write reviews and rate the restaurants listed on our platform to share their worthy experience of eating out with other customers.
         </p>
-        <h1 className="head3">Our Mission?</h1>
+        <h1 className="head3">Our Mission</h1>
         <p className="wwa">
           Committed to revolutionizing the way of eating out, we strive to provide the best services and deals to our customers at partner restaurants. Pushing the food industry to its best and bringing out new ways to solve problems in the industry. Working on transforming the complete experience from thoughts of eating out to leaving the restaurant. We aim to understand the need of our customers and provide them with the best.
         </p>
-        <h1 className="head3">Our Vision?</h1>
+        <h1 className="head3">Our Vision</h1>
         <p className="wwa">
-          Our vision is to bring best in class services to every single customer of ours who goes out for eating with friends, family or loved ones by creating DoT Restros a symbol of trust and quality.
+          Our vision is to bring best in class services to every single customer who goes out for eating with friends, family or loved ones by creating DoT Restros a symbol of trust and quality.
         </p>
       </div>
       <div style={{ position: "relative" }}>

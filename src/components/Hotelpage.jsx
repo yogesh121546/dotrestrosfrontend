@@ -9,7 +9,6 @@ import { CCarousel,CCarouselItem,CImage } from '@coreui/react'
 
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -64,6 +63,9 @@ const Hotelpage = () => {
   const [telno, settelno] = useState(123456789)
   const [date, setdate] = useState("")
   const [time, settime] = useState("")
+  const [person,setPerson] = useState("")
+  const [combo,setCombo] = useState("")
+  const [instruction,setInstruction] = useState("")
 
   //restaurent prices map
   const prices = [
@@ -176,6 +178,15 @@ useEffect(() => {
   const getTime = (v) => {
     settime(`${v.$H}:${v.$m}`)
   }
+  const persons = (v)=>{
+    setPerson(v.target.value)
+  }
+  const combos = (v)=>{
+    setCombo(v.target.value)
+  }
+  const instructions = (v)=>{
+    setInstruction(v.target.value)
+  }
   const sendOrderDetails = () => {
     const preorderDetails = dishArray.filter((items) => {
       return items.qty > 0;
@@ -209,7 +220,10 @@ useEffect(() => {
             },
             "bookingDetails": {
               "date": date,
-              "time": time
+              "time": time,
+              "person":String(person),
+              "combo":combo,
+              "instruction":instruction
             },
             "restaurant": {
               "name": hotel.name,
@@ -238,6 +252,62 @@ useEffect(() => {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+
+  const [reviewList,setReviewList] = useState([]);
+  const [renderWindow, setRenderWindow] = useState(<></>);
+
+  const reviewget = async()=>{
+    try {
+      const data = await fetch(`${backend_link}/reviews/all`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const review = await data.json();
+      setReviewList(review);
+    } catch (error) {
+      console.log(error);
+    }
+      
+      // setOrderList(["Harikrushna","Joker","Aashirwad"])
+    }
+
+    useEffect(()=>{
+      reviewget();
+    },[]);
+
+    useEffect(()=>{
+      const elements = reviewList.map((review) => {
+        if(review.restaurant.name === hotel.name){
+        const name = review.userDetails.username;
+        return(<>
+            <CardContent>
+              <Card sx={{ boxShadow: "none" }} >
+                <CardHeader
+                  sx={{ padding: '0 0 0 0%' }}
+                  avatar={
+                    <Avatar sx={{ bgcolor: red[500] }} aria-label="avatar">
+                      {name[0]}
+                    </Avatar>
+                  }
+                  title={
+                    <Typography variant="h7" fontWeight="700" >
+                      {name}
+                    </Typography>
+                  }
+                />
+                <CardContent sx={{ padding: '0 0 0 0%', marginLeft: "3.5rem" }} >
+                  {review.content}
+                </CardContent>
+              </Card>
+            </CardContent>
+        </>);
+      }
+      });
+      setRenderWindow(elements);
+    },[reviewList]);
 
   return (
     <>
@@ -390,7 +460,7 @@ useEffect(() => {
               }
               subheader={
                 <Grid container sx={{ alignItems: "center" }}>
-                  <Grid container xs={4} sx={{ marginTop: "3%" }} >
+                  <Grid container xs={5} sx={{ marginTop: "3%" }} >
                     <Grid sx={{ display: "flex", alignItems: "center", marginRight: "3%", marginLeft: "36px" }} ><img src='/images/wifi.png' style={{ width: "25px", height: "25px " }} alt='cuisine logo' /></Grid>
                     <Grid>
                       <Typography variant="h7" fontWeight="700" >
@@ -398,7 +468,7 @@ useEffect(() => {
                       </Typography>
                     </Grid>
                   </Grid>
-                  <Grid container xs={8} sx={{ marginTop: "3%" }}>
+                  <Grid container xs={7} sx={{ marginTop: "3%" }}>
                     <Grid sx={{ display: "flex", alignItems: "center", marginRight: "0%", marginLeft: "36px" }} ><img src='/images/ac.png' style={{ width: "25px", height: "25px " }} alt='cuisine logo' /></Grid>
                     <Grid>
                       <Typography variant="h7" fontWeight="700" >
@@ -406,7 +476,7 @@ useEffect(() => {
                       </Typography>
                     </Grid>
                   </Grid>
-                  <Grid container xs={4} sx={{ marginTop: "3%" }}>
+                  <Grid container xs={5} sx={{ marginTop: "3%" }}>
                     <Grid sx={{ display: "flex", alignItems: "center", marginRight: "3%", marginLeft: "36px" }} ><img src='/images/car.png' style={{ width: "25px", height: "25px " }} alt='cuisine logo' /></Grid>
                     <Grid>
                       <Typography variant="h7" fontWeight="700" >
@@ -414,7 +484,7 @@ useEffect(() => {
                       </Typography>
                     </Grid>
                   </Grid>
-                  <Grid container xs={8} sx={{ marginTop: "3%" }}>
+                  <Grid container xs={7} sx={{ marginTop: "3%" }}>
                     <Grid sx={{ display: "flex", alignItems: "center", marginRight: "3%", marginLeft: "36px" }} ><img src='/images/serving.png' style={{ width: "25px", height: "25px " }} alt='cuisine logo' /></Grid>
                     <Grid>
                       <Typography variant="h7" fontWeight="700" >
@@ -463,12 +533,14 @@ useEffect(() => {
                 Date
               </Typography>
               <DatePick forValue={getDate} />
+              <Grid sx={{marginTop:'2rem'}}><TextField onChange={persons} name="persons" type='number' id="outlined-basic" label="Adults" variant="outlined" style={{ width: "100px" }} /><TextField onChange={instructions} name="instruction" type='text' id="outlined-basic" label="Jain Food, Other Instruction" variant="outlined" style={{ width: "210px" }} sx={{marginLeft:'20px'}} /></Grid>
             </Grid>
             <Grid className='toset' item>
               <Typography variant="h6" fontWeight="700">
                 Time Slot
               </Typography>
               <Timepick sx={{minWidth:'372px'}} forValue={getTime} />
+              <Grid sx={{marginTop:'2rem'}}><TextField onChange={combos} name="combo" type='text' id="outlined-basic" label="Enter Combo Choices if Selected" variant="outlined" style={{ width: "330px" }} defaultValue={"No"} /></Grid>
             </Grid>
       </Grid>
       <Grid sx={{ display: { xs: "flex" }, marginTop: "4%", justifyContent: "space-evenly", flexWrap:'wrap',padding:'0px 15px' }} container spacing={2}>
@@ -493,13 +565,13 @@ useEffect(() => {
                     return (
                       <AccordionDetails>
                         <Grid container sx={{ justifyContent: "center", alignItems: "center" }} >
-                          <Grid id={dishID} xs={4} sx={{ textAlign: "center" }} >
+                          <Grid id={dishID} xs={6} sx={{ textAlign: "left",overflow:'scroll'}} >
                             {type}
                           </Grid>
-                          <Grid xs={4} sx={{ textAlign: "center" }} >
+                          <Grid xs={3} sx={{ textAlign: "center" }} >
                             {Object.values(Object.values(hotel.menu)[k])[index]}
                           </Grid>
-                          <Grid xs={4} sx={{ display: "flex", justifyContent: "center", alignItems: 'center' }} >
+                          <Grid xs={3} sx={{ display: "flex", justifyContent: "right" }} >
                             <AddCircleIcon
                               onClick={() => {
                                 setPlus(true)
@@ -635,9 +707,9 @@ useEffect(() => {
           </Card>
         </Grid>
       </Grid>
-      <Grid container sx={{ display: { xs: "flex" }, marginTop: "5%", justifyContent: "center", marginLeft: { xs: "0%", md: "0%" } }} spacing={0} >
-        <Grid item xs={12} md={6} >
-          <Card sx={{ width: 'auto', minWidth: "100%", height: 'auto', borderRadius: '20px', boxShadow: 0 }}>
+      <Grid container sx={{ display: { xs: "flex" }, marginTop: "5%", justifyContent: "space-evenly", marginLeft: { xs: "0%", md: "0%" } }} spacing={0} >
+        <Grid item xs={12} md={6} sx={{maxHeight:'427px',overflowY:'scroll'}}>
+        <Card sx={{ width: 'auto', minWidth: "100%", height: 'auto', borderRadius: '20px', boxShadow: 0 }}>
             <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", marginLeft: "0%" }}
               title={
                 <Grid container >
@@ -656,48 +728,11 @@ useEffect(() => {
                     '&:hover': {
                       backgroundColor: '#2475bf',
                     }
-                  }} ><Link style={{ textDecoration: 'none', color: "#fff" }} to={`/reviews`} >Add review</Link></MenuItem>
+                  }} ><Link style={{ textDecoration: 'none', color: "#fff" }} to={`/reviews/${hotel.id}`} >Add Review</Link></MenuItem>
                 </Grid>
               }
             />
-            <CardContent>
-              <Card sx={{ boxShadow: "none" }} >
-                <CardHeader
-                  sx={{ padding: '0 0 0 0%' }}
-                  avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="avatar">
-                      A
-                    </Avatar>
-                  }
-                  title={
-                    <Typography variant="h7" fontWeight="700" >
-                      Akash Yadav
-                    </Typography>
-                  }
-                />
-                <CardContent sx={{ padding: '0 0 0 0%', marginLeft: "8%" }} >
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam aliquid dolor at molestias. Consequuntur, necessitatibus labore dicta recusandae deserunt ut tenetur aperiam ducimus ratione excepturi praesentium totam perspiciatis similique minus dolor autem a assumenda nostrum aliquid repudiandae iste obcaecati nemo modi. Ad reiciendis mollitia quis porro ullam, molestiae nobis officia.
-                </CardContent>
-              </Card>
-              <Card sx={{ boxShadow: "none" }} >
-                <CardHeader
-                  sx={{ padding: '0 0 0 0%' }}
-                  avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="avatar">
-                      H
-                    </Avatar>
-                  }
-                  title={
-                    <Typography variant="h7" fontWeight="700" >
-                      Harsh Singh
-                    </Typography>
-                  }
-                />
-                <CardContent sx={{ padding: '0 0 0 0%', marginLeft: "8%" }} >
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam aliquid dolor at molestias. Consequuntur, necessitatibus labore dicta recusandae deserunt ut tenetur aperiam ducimus ratione excepturi praesentium totam perspiciatis similique minus dolor autem a assumenda nostrum aliquid repudiandae iste obcaecati nemo modi. Ad reiciendis mollitia quis porro ullam, molestiae nobis officia.
-                </CardContent>
-              </Card>
-            </CardContent>
+          {renderWindow}
           </Card>
         </Grid>
         <Grid item xs={12} md={4}>

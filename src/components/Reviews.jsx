@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import Hotellist from "./Hotellist";
+import { useParams } from "react-router-dom";
+import backend_link from '../links'
 import { Input, Rating, Button} from '@mui/material';
-import axios from "axios";
 
 function Reviews(){
+    const { id } = useParams()
+
+    const hotel = Hotellist.find((h) => {
+      return (
+        String(h.id) === id
+      )
+    })
     const [review,setReview] = useState('');
     const [rating,setRating] = useState({
         overall:0,
@@ -17,8 +26,8 @@ function Reviews(){
     const addreview = async () => {
         const data = {
           restaurant: {
-            name: "Testing Review",
-            code: 3,
+            name: hotel.name,
+            code: hotel.id,
           },
           content: review,
           ratings: {
@@ -31,7 +40,7 @@ function Reviews(){
         };
         try {
           console.log("reviews reached here");
-          const res = await fetch("http://localhost:4000/reviews/create", {
+          const res = await fetch(`${backend_link}/reviews/create`, {
             method: "POST",
             headers:{
                 "Content-Type":"application/json"

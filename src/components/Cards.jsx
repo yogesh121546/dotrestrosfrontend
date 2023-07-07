@@ -36,7 +36,7 @@ const Hotelcard=(props)=> {
 //   };
 
   return (
-    <Card sx={{ width:'320px',height:'330px',borderRadius:'20px', transition:'0.5s' ,'&:hover':{transform:'scale(1.05)'} }}>
+    <Card sx={{ width:'320px',height:'330px',borderRadius:'20px', transition:'0.3s' ,'&:hover':{transform:'scale(1.05)'} }}>
       
       <CardMedia
         component="img"
@@ -67,7 +67,7 @@ const Hotelcard=(props)=> {
       />
       <CardContent sx={{padding:'3px',paddingLeft:'15px'}}>
         <Typography variant="body2" color="text.secondary" sx={{width:'200px',padding:'0px'}}>
-          Flat <span style={{ color: "#2A88DF" }} > {props.discount} </span> off on total bill
+          Flat <span style={{ color: "#2A88DF",fontWeight:'bold' }} > {props.discount} </span> off on total bill
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{textAlign:'right', marginRight:'13px', marginTop:'5px'}}>
           <span style={{ color: "#2A88DF", fontSize:'15px', fontWeight:'bold'}} > {props.special} </span>
