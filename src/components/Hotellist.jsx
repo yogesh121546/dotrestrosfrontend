@@ -227,7 +227,7 @@ const Hotellist=[
     },
     {
         id:6,
-        name:"369 Pizzaro",
+        name:"Tapi Maiya Restaurant",
         location:"Kamrej, Surat",
         image:"/images/harikrushna.jpeg",
         discount:"10%",
@@ -235,6 +235,14 @@ const Hotellist=[
     },
     {
         id:7,
+        name:"369 Pizzaro",
+        location:"Kamrej, Surat",
+        image:"/images/harikrushna.jpeg",
+        discount:"10%",
+        rating:4.4
+    },
+    {
+        id:8,
         name:"Bansari Restaurant",
         location:"Sarthana, Surat",
         image:"/images/harikrushna.jpeg",
@@ -242,7 +250,7 @@ const Hotellist=[
         rating:4.5
     },
     {
-        id:8,
+        id:9,
         name:"Tit Bit Multicuisine",
         location:"Sarthana, Surat",
         image:"/images/harikrushna.jpeg",
