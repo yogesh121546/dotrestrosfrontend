@@ -9,6 +9,7 @@ import Guest from './components/Guest'
 import Cancellation from './components/Cancellation'
 import Contactus from './components/Contactus'
 import Reviews from './components/Reviews'
+import Adminpanel from './components/Adminpanel';
 
 // import Flyer from './components/Flyer'
 // import Hotelcard from './components/Cards'
@@ -30,6 +31,7 @@ function App() {
           <Route exact path='/contactus' element={<Contactus/>} />
           <Route exact path='/reviews/:id' element={<Reviews/>} />
           <Route path='/hotelpage/:id' element={<Hotelpage />} />
+          <Route path='/adminpanel/:code' element={<Adminpanel />} />
         </Routes>
       </ScrollToTop>
     </>

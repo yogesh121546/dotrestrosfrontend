@@ -3,7 +3,7 @@ import Header from "./Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import backend_link from '../links'
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Rating } from "@mui/material";
 import Footer from "./Footer";
 import Hotellist from "./Hotellist"
@@ -40,8 +40,6 @@ const MyOrders = () => {
     } catch (error) {
       console.log(error);
     }
-      
-      // setOrderList(["Harikrushna","Joker","Aashirwad"])
     }
 
   useEffect(()=>{
@@ -60,9 +58,7 @@ const MyOrders = () => {
       })
         return (
             <>
-            
-              {/* <h1>{order.bookingDetails.time}</h1> */}
-            <div className="maindiv">
+              <div className="mainpagediv">
                 <div className="img">
                     <img src={hotel.image} alt="" />
                 </div>
@@ -83,10 +79,23 @@ const MyOrders = () => {
                     <div className="action">
                         <Link className="btn" to={hotel.menulink}>Menu</Link>
                         <Link className="btn" to={`/reviews`}>Add Review</Link>
-                        <Link className="btn" to={`${backend_link}/orders/cancel/${order._id}`}>Cancel</Link>
+                        <Link onClick={async ()=>{
+                          try{
+                          const data = await fetch(`${backend_link}/orders/cancel/${order._id}`, {
+                            method: "GET",
+                            headers: {
+                              "Content-Type": "application/json",
+                            },
+                            credentials: "include",
+                          });}
+                          catch (error){
+                            console.log(error);
+                          }
+                          window.location.reload(true)
+                        }} className="btn">Cancel</Link>
                     </div>
                 </div>
-            </div>
+              </div>
             </>
           );
       
@@ -101,7 +110,7 @@ const MyOrders = () => {
                 .masterdiv{
                   margin-bottom:90px;
                 }
-                .maindiv{
+                .mainpagediv{
                     border-top:2px solid #2a88df;
                     border-bottom:2px solid #2a88df;
                     margin-bottom:40px;
@@ -215,10 +224,10 @@ const MyOrders = () => {
                   width:120px;
                   font-size:17px;
                   margin-bottom:10px;
-              }
                 }
+              }
             `}
-        </style>
+    </style>
       <Header />
       <div className="masterdiv"></div>
       {renderWindow}

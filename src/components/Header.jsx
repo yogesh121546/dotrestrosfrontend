@@ -15,11 +15,8 @@ import Container from '@mui/material/Container';
 // import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
-import axios from 'axios';
 // import Tooltip from '@mui/material/Tooltip';
 import backend_link from '../links'
-import { CheckCircle } from '@mui/icons-material';
-import zIndex from '@mui/material/styles/zIndex';
 // import Divider from '@mui/material/Divider';
 // import AdbIcon from '@mui/icons-material/Adb';
 // const pages = ['Home', 'My Orders', 'About Us'];

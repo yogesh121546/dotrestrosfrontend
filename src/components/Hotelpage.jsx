@@ -229,7 +229,7 @@ useEffect(() => {
               "name": hotel.name,
               "code": hotel.id
             },
-            "orderDetails": orderDetails
+            "orderDetails": preorderDetails
 
           }),
           credentials: "include"

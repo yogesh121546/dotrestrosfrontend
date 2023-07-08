@@ -1,6 +1,7 @@
 const Hotellist=[
     {
         id:1,
+        code:992581199996,
         name:"Harikrushna Restaurant",
         location:"Kamrej, Surat",
         image:"/images/HarikrushnaKamrej/hk1.jpeg",
@@ -41,6 +42,7 @@ const Hotellist=[
     },
     {
         id:2,
+        code:905401101536,
         name:"The Lion King",
         location:"Kashi Plaza, Kamrej",
         image:"/images/LionKingKamrej/lk1.jpeg",
@@ -83,6 +85,7 @@ const Hotellist=[
     },
     {
         id:3,
+        code:812871529924,
         name:"Jail Chai Bar Cafe",
         location:"Sarthana, Surat",
         image:"/images/JailChaiBarSarthana/jcb1.jpeg",
@@ -137,6 +140,7 @@ const Hotellist=[
     },
     {
         id:4,
+        code:788781288581,
         name:"Fannito Pizza",
         location:"Nana Varachha, Surat",
         image:"/images/FannitoPizzaVara6a/fp1.jpeg",
@@ -177,6 +181,7 @@ const Hotellist=[
     },
     {
         id:5,
+        code:851140509057,
         name:"Joker Restaurant",
         location:"Khao Gali, Kamrej",
         image:"/images/JokerKamrej/jk1.jpeg",
