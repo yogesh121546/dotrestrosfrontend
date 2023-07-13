@@ -255,6 +255,27 @@ useEffect(() => {
 
   const [reviewList,setReviewList] = useState([]);
   const [renderWindow, setRenderWindow] = useState(<></>);
+  // const [restroDetails,setRestroDetails] = useState();
+
+  // const restroget = async()=>{
+  //   try {
+  //     const data = await fetch(`${backend_link}/restaurants/find/${hotel.id}`,{
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       credentials: "include",
+  //     });
+  //     const restaurant = await data.json();
+  //     setRestroDetails(restaurant);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+  // useEffect(()=>{
+  //   restroget();
+  // })
 
   const reviewget = async()=>{
     try {
@@ -356,6 +377,7 @@ useEffect(() => {
                   <Grid sx={{ paddingLeft: "0%" }} xs={2} >
                     <Fab sx={{ boxShadow: "none",float:'right' }} color="primary" aria-label="add">
                       <Typography variant="h7" fontWeight="700" fontSize="20px"  >
+                        {/* {restroDetails.ratings.overall} */}
                         {hotel.rating}
                       </Typography>
                     </Fab>
