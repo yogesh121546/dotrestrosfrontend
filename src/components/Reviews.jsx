@@ -40,7 +40,7 @@ function Reviews(){
         };
         try {
           console.log("reviews reached here");
-          const res = await fetch(`${backend_link}/reviews/create`, {
+          const res = await fetch(`${backend_link}/reviews`, {
             method: "POST",
             headers:{
                 "Content-Type":"application/json"

@@ -5,7 +5,6 @@ import Fab from '@mui/material/Fab';
 import { Link, useParams } from "react-router-dom";
 import MenuItem from '@mui/material/MenuItem';
 import { CCarousel,CCarouselItem,CImage } from '@coreui/react'
-// import dayjs from 'dayjs';
 
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -179,6 +178,7 @@ useEffect(() => {
     settime(`${v.$H}:${v.$m}`)
   }
   const persons = (v)=>{
+    console.log(v.target.value)
     setPerson(v.target.value)
   }
   const combos = (v)=>{
@@ -208,7 +208,8 @@ useEffect(() => {
     console.log(orderDetails)
     const sendData = async () => {
       try {
-        const response = await fetch(`${backend_link}/orders/send`, {
+        console.log(`here is person value ${person}`)
+        const response = await fetch(`${backend_link}/orders`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -221,7 +222,7 @@ useEffect(() => {
             "bookingDetails": {
               "date": date,
               "time": time,
-              "person":String(person),
+              "person":person,
               "combo":combo,
               "instruction":instruction
             },
@@ -255,31 +256,39 @@ useEffect(() => {
 
   const [reviewList,setReviewList] = useState([]);
   const [renderWindow, setRenderWindow] = useState(<></>);
-  // const [restroDetails,setRestroDetails] = useState();
+  const [ratingOverall,setRatingOverall] = useState(0);
+  const [ratingStaff,setRatingStaff] = useState(0);
+  const [ratingFood,setRatingFood] = useState(0);
+  const [ratingAmbience,setRatingAmbience] = useState(0);
+  const [ratingServices,setRatingServices] = useState(0);
 
-  // const restroget = async()=>{
-  //   try {
-  //     const data = await fetch(`${backend_link}/restaurants/find/${hotel.id}`,{
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       credentials: "include",
-  //     });
-  //     const restaurant = await data.json();
-  //     setRestroDetails(restaurant);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  const restroget = async()=>{
+    try {
+      const data = await fetch(`${backend_link}/restaurants/${hotel.id}`,{
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const restaurant = await data.json();
+      setRatingOverall(restaurant.restaurant.ratings.overall);
+      setRatingStaff(restaurant.restaurant.ratings.staff);
+      setRatingFood(restaurant.restaurant.ratings.food);
+      setRatingAmbience(restaurant.restaurant.ratings.ambience);
+      setRatingServices(restaurant.restaurant.ratings.services);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-  // useEffect(()=>{
-  //   restroget();
-  // })
+  useEffect(()=>{
+    restroget();
+  },[])
 
   const reviewget = async()=>{
     try {
-      const data = await fetch(`${backend_link}/reviews/all`, {
+      const data = await fetch(`${backend_link}/reviews`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -377,8 +386,7 @@ useEffect(() => {
                   <Grid sx={{ paddingLeft: "0%" }} xs={2} >
                     <Fab sx={{ boxShadow: "none",float:'right' }} color="primary" aria-label="add">
                       <Typography variant="h7" fontWeight="700" fontSize="20px"  >
-                        {/* {restroDetails.ratings.overall} */}
-                        {hotel.rating}
+                        {ratingOverall=== 0?"New":ratingOverall}
                       </Typography>
                     </Fab>
                   </Grid>
@@ -730,7 +738,7 @@ useEffect(() => {
         </Grid>
       </Grid>
       <Grid container sx={{ display: { xs: "flex" }, marginTop: "5%", justifyContent: "space-evenly", marginLeft: { xs: "0%", md: "0%" } }} spacing={0} >
-        <Grid item xs={12} md={6} sx={{maxHeight:'427px',overflowY:'scroll'}}>
+        <Grid item xs={12} md={6} sx={{minHeight:'300px',maxHeight:'427px',overflowY:'scroll'}}>
         <Card sx={{ width: 'auto', minWidth: "100%", height: 'auto', borderRadius: '20px', boxShadow: 0 }}>
             <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", marginLeft: "0%" }}
               title={
@@ -758,50 +766,9 @@ useEffect(() => {
           </Card>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Card sx={{ paddingLeft: "0%", marginLeft: "0%", width: '100%', height: '470px', borderRadius: '20px', boxShadow: 0 }} >
-            <Card sx={{ boxShadow: 0 }} >
-              <CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 0%" }}
-                  title={
-                    <Typography variant="h7" fontWeight="700" >
-                      5 star
-                    </Typography>
-                  }
-                />
-                <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
-                  <BorderLinearProgress variant="determinate" value={33} />
-                </CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 0%" }}
-                  title={
-                    <Typography variant="h7" fontWeight="700" >
-                      4 star
-                    </Typography>
-                  }
-                />
-                <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
-                  <BorderLinearProgress variant="determinate" value={30} />
-                </CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 0%" }}
-                  title={
-                    <Typography variant="h7" fontWeight="700" >
-                      3 star
-                    </Typography>
-                  }
-                />
-                <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
-                  <BorderLinearProgress variant="determinate" value={20} />
-                </CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 0%" }}
-                  title={
-                    <Typography variant="h7" fontWeight="700" >
-                      2 star
-                    </Typography>
-                  }
-                />
-                <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
-                  <BorderLinearProgress variant="determinate" value={50} />
-                </CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "10% 0 2% 0%" }}
+          <Card sx={{ paddingLeft: "4%",paddingRight:'4%', marginLeft: "0%", width: '100%', height: '300px', borderRadius: '20px', boxShadow: 0 }} >
+              
+                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "4% 0 2% 0%" }}
                   title={
                     <Typography variant="h7" fontWeight="700" >
                       Staff
@@ -809,9 +776,9 @@ useEffect(() => {
                   }
                 />
                 <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
-                  <BorderLinearProgress variant="determinate" value={10} />
+                  <LinearProgress color="primary" variant="determinate" value={ratingStaff*20} />
                 </CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 0%" }}
+                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "5% 0 2% 0%" }}
                   title={
                     <Typography variant="h7" fontWeight="700" >
                       Food
@@ -819,9 +786,9 @@ useEffect(() => {
                   }
                 />
                 <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
-                  <BorderLinearProgress variant="determinate" value={40} />
+                  <LinearProgress color="primary" variant="determinate" value={ratingFood*20} />
                 </CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 0%" }}
+                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "5% 0 2% 0%" }}
                   title={
                     <Typography variant="h7" fontWeight="700" >
                       Ambience
@@ -829,9 +796,9 @@ useEffect(() => {
                   }
                 />
                 <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
-                  <BorderLinearProgress variant="determinate" value={45} />
+                  <LinearProgress color="primary" variant="determinate" value={ratingAmbience*20} />
                 </CardContent>
-                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "2% 0 2% 0%" }}
+                <CardHeader sx={{ backgroundColor: "white", color: "#2A88DF", padding: "5% 0 2% 0%" }}
                   title={
                     <Typography variant="h7" fontWeight="700" >
                       Services
@@ -839,10 +806,8 @@ useEffect(() => {
                   }
                 />
                 <CardContent sx={{ padding: "0px 0px 0px 0%" }} >
-                  <BorderLinearProgress variant="determinate" value={8} />
+                  <LinearProgress color="primary" variant="determinate" value={ratingServices*20} />
                 </CardContent>
-              </CardContent>
-            </Card>
           </Card>
         </Grid>
       </Grid>

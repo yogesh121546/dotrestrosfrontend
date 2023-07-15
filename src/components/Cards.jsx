@@ -1,42 +1,41 @@
 import * as React from 'react';
-// import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Fab from '@mui/material/Fab';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-// import CardActions from '@mui/material/CardActions';
-// import Collapse from '@mui/material/Collapse';
-// import Avatar from '@mui/material/Avatar';
-// import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-// import { red } from '@mui/material/colors';
-// import FavoriteIcon from '@mui/icons-material/Favorite';
-// import ShareIcon from '@mui/icons-material/Share';
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// import MoreVertIcon from '@mui/icons-material/MoreVert';
-
-// const ExpandMore = styled((props) => {
-//   const { expand, ...other } = props;
-//   return <IconButton {...other} />;
-// })(({ theme, expand }) => ({
-//   transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-//   marginLeft: 'auto',
-//   transition: theme.transitions.create('transform', {
-//     duration: theme.transitions.duration.shortest,
-//   }),
-// }));
+import { useEffect } from 'react';
+import { useState } from 'react';
+import backend_link from '../links';
 
 const Hotelcard=(props)=> {
-  // const [expanded, setExpanded] = React.useState(false);
 
-//   const handleExpandClick = () => {
-//     setExpanded(!expanded);
-//   };
+const [ratingOverall,setRatingOverall] = useState(0);
+
+const restroget = async()=>{
+  try {
+    const data = await fetch(`${backend_link}/restaurants/${props.id}`,{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    const restaurant = await data.json();
+    setRatingOverall(restaurant.restaurant.ratings.overall);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+useEffect(()=>{
+  restroget();
+},[])
 
   return (
-    <Card sx={{ width:'320px',height:'330px',borderRadius:'20px', transition:'0.3s' ,'&:hover':{transform:'scale(1.05)'} }}>
+    <Card sx={{ width:'320px',height:'330px',borderRadius:'20px', transition:'0.3s' ,'&:hover':{transform:'scale(1.05)',boxShadow:'-5px 10px 10px 0 rgba(0, 0, 0, 0.2)'} }}>
       
       <CardMedia
         component="img"
@@ -56,7 +55,7 @@ const Hotelcard=(props)=> {
           <Grid sx={{ paddingLeft: "14%" }} xs={4} >
             <Fab sx={{ boxShadow: "none",transform:'scale(0.8)' }} color="primary" aria-label="add">
               <Typography variant="h7" fontWeight="700" fontSize="20px"  >
-                {props.rating}
+                {ratingOverall=== 0?"New":ratingOverall}
               </Typography>
             </Fab>
           </Grid>

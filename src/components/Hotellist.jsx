@@ -16,7 +16,7 @@ const Hotellist=[
         special:"Premium Partner",
         contact:"9925899996",
         menu:{
-            Soup:{"Tomato Soup":120,"Veg Manchow Soup":130,"Veg Hot & Sour Soup":130,"Swwet Corn Soup":135,"Lemon & Corriander Soup":145},
+            Soup:{"Tomato Soup":120,"Veg Manchow Soup":130,"Veg Hot & Sour Soup":130,"Sweet Corn Soup":135,"Lemon & Corriander Soup":145},
             Chinese:{"Manchurian Dry":160,"Manchurian Gravy":160,"Veg Hakka Noodles":160,"Schezwan Fry Rice":160,"Veg Fry Rice":160,"Manchurian Rice":160,"Special Chinese Bhel":170,"Veg Crispy":180,"Paneer Chilli Dry":210,"Paneer Chilli Gravy":210},
             Other:{"Chole Bhature":150,"Cheese Chole Bhature":180,"Paneer Chole Bhature":180,"Extra Bhature":50},
             Kathiyawadi:{"Rajwadi Undhiyu":95,"Rajwadi Dhokali":95,"Sev Tameta":90,"Potato Shak":90,"Kathol Shak":90,"Lasaniya Sev Tameta":105,"Dal(Kathiyawadi)":40,"Bhaat":40,"Kadhi(Evening)":40,"Khichdi(Evening)":40,"Vegetable Khichdi(Evening)":90,"Masala Khichdi(Evening)":90,"Palak Khichdi(Evening)":90,"Dal Khichdi":100,"Dahi Tikhari":95,"Dahi":50,"Rotla(Bajri)":28,"Tawa Parantha":28,"Swami Roti":16,"Gud":20},
@@ -243,18 +243,10 @@ const Hotellist=[
     },
     {
         id:8,
-        name:"Bansari Restaurant",
-        location:"Sarthana, Surat",
+        name:"Kake Di Hatti",
+        location:"Adajan, Surat",
         image:"/images/harikrushna.jpeg",
-        discount:"20%",
-        rating:4.5
-    },
-    {
-        id:9,
-        name:"Tit Bit Multicuisine",
-        location:"Galaxy Circle, Pal",
-        image:"/images/harikrushna.jpeg",
-        discount:"20%",
+        discount:"10%",
         rating:4.5
     }
 ]

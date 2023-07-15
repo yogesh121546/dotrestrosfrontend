@@ -7,28 +7,24 @@ import { Link } from "react-router-dom";
 import { Rating } from "@mui/material";
 import Footer from "./Footer";
 import Hotellist from "./Hotellist"
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import { Grid } from "@mui/material";
 
 
 const MyOrders = () => {
   const [orderList, setOrderList] = useState([]);
   const [renderWindow, setRenderWindow] = useState(<></>);
-//   useEffect(async () => {
-//     // const data = await fetch(`${backend_link}/user/profile`, {
-//     //   method: "GET",
-//     //   headers: {
-//     //     "Content-Type": "application/json",
-//     //   },
-//     //   credentials: "include",
-//     // });
-//     // const user = await data.json();
-//     // setOrderList(user.orders);
-//     setOrderList(["Harikrushna Restaurant","Joker Restaurant","Aashirwad Restaurant"]);
-// }, []);
+  const [open, setOpen] = useState(false);
 
 
-  const orderget = async()=>{
+  const orderget = async () => {
     try {
-      const data = await fetch(`${backend_link}/user/profile`, {
+      const data = await fetch(`${backend_link}/users`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -36,77 +32,109 @@ const MyOrders = () => {
         credentials: "include",
       });
       const user = await data.json();
+      console.log(user.orders);
       setOrderList(user.orders);
     } catch (error) {
       console.log(error);
     }
-    }
-
-  useEffect(()=>{
-    orderget();
-  },[]);
+  }
 
   useEffect(() => {
-    
+    orderget();
+  }, []);
+
+
+  useEffect(() => {
 
     const elements = orderList.map((order) => {
-      
+
       const hotel = Hotellist.find((h) => {
         return (
           String(h.name) === order.restaurant.name
         )
       })
-        return (
-            <>
-              <div className="mainpagediv">
-                <div className="img">
-                    <img src={hotel.image} alt="" />
+
+      const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+      return (
+        <>
+        <Dialog
+                open={open}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    {"Use Google's location service?"}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        Let Google help apps determine location. This means sending anonymous
+                        location data to Google, even when no apps are running.
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose} sx={{color:'red'}}>Decline</Button>
+                    <Button onClick={handleClose} autoFocus sx={{fontWeight:'bold'}}>
+                        Accept
+                    </Button>
+                </DialogActions>
+            </Dialog>
+          <div className="mainpagediv">
+            <div className="img">
+              <img src={hotel.image} alt="" />
+            </div>
+            <div className="details">
+              <div className="info">
+                <h3 className="name">{hotel.name}</h3>
+                <div className="test">
+                  <div className="testf">
+                    <span>{hotel.rating}</span>
+                    <Rating name="read-only" sx={{ color: 'white' }} value={1} max={1} readOnly />
+                  </div>
                 </div>
-                <div className="details">
-                    <div className="info">
-                      <h3 className="name">{hotel.name}</h3>
-                      <div className="test">
-                        <div className="testf">
-                          <span>{hotel.rating}</span>
-                          <Rating name="read-only" sx={{color:'white'}} value={1} max={1} readOnly />
-                        </div>
-                      </div>
-                      <h5 className="address">{hotel.location}</h5>
-                      <h6 className="contact">{hotel.contact}</h6>
-                      <h6 className="offer">Flat <span className="per">{hotel.discount}</span> off on total bill</h6>
-                      <h6 className="direction"><Link to={hotel.direction} style={{textDecoration:'none', color:'#2a88df'}}>Get direction on map</Link></h6>
-                    </div>
-                    <div className="action">
-                        <Link className="btn" to={hotel.menulink}>Menu</Link>
-                        <Link className="btn" to={`/reviews`}>Add Review</Link>
-                        <Link onClick={async ()=>{
-                          try{
-                          const data = await fetch(`${backend_link}/orders/cancel/${order._id}`, {
-                            method: "GET",
-                            headers: {
-                              "Content-Type": "application/json",
-                            },
-                            credentials: "include",
-                          });}
-                          catch (error){
-                            console.log(error);
-                          }
-                          window.location.reload(true)
-                        }} className="btn">Cancel</Link>
-                    </div>
-                </div>
+                <h5 className="address">{hotel.location}</h5>
+                <h6 className="contact">{hotel.contact}</h6>
+                <h6 className="offer">Flat <span className="per">{hotel.discount}</span> off on total bill</h6>
+                <h6 className="direction"><Link to={hotel.direction} style={{ textDecoration: 'none', color: '#2a88df' }}>Get direction on map</Link></h6>
               </div>
-            </>
-          );
-      
+              <div className="action">
+                <Link className="btn" onClick={handleClickOpen}>Summary</Link>
+                <Link className="btn" to={`/reviews/${hotel.id}`}>Add Review</Link>
+                <Link onClick={async () => {
+                  try {
+                    const data = await fetch(`${backend_link}/orders/${order._id}`, {
+                      method: "DELETE",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      credentials: "include",
+                    });
+                  }
+                  catch (error) {
+                    console.log(error);
+                  }
+                  window.location.reload(true)
+                }} className="btn">Cancel</Link>
+              </div>
+            </div>
+          </div>
+        </>
+      );
+
     });
     setRenderWindow(elements);
   }, [orderList]);
 
   return (
     <>
-    <style>
-            {`
+      <style>
+        {`
                 .masterdiv{
                   margin-bottom:90px;
                 }
@@ -227,7 +255,7 @@ const MyOrders = () => {
                 }
               }
             `}
-    </style>
+      </style>
       <Header />
       <div className="masterdiv"></div>
       {renderWindow}

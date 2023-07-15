@@ -14,9 +14,14 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import sound from './sound.mp3'
+import { io } from "socket.io-client";
+
+const socket=io.connect("http://localhost:4000");
 
 const Adminpanel = () => {
-
+    socket.on('check',(data)=>{
+        console.log("this is the data ", data);
+    })
     const { code } = useParams()
 
     const hotel = Hotellist.find((h) => {
@@ -32,7 +37,7 @@ const Adminpanel = () => {
 
     const orderget = async () => {
         try {
-            const data = await fetch(`${backend_link}/orders/all`, {
+            const data = await fetch(`${backend_link}/orders`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -67,15 +72,18 @@ const Adminpanel = () => {
                         <Grid sx={{ width: '10%', textAlign: 'center' }}>{order.customerDetails.phoneNumber}</Grid>
                         <Grid sx={{ width: '10%', textAlign: 'center' }}>{order.bookingDetails.date}</Grid>
                         <Grid sx={{ width: '10%', textAlign: 'center' }}>{order.bookingDetails.time}</Grid>
-                        <Grid sx={{ width: '10%', textAlign: 'center' }}>{order.person}</Grid>
+                        <Grid sx={{ width: '10%', textAlign: 'center' }}>{order.bookingDetails.person}</Grid>
                         <Grid sx={{ width: '10%', textAlign: 'center' }}>200</Grid>
                         <Grid sx={{ width: '10%', textAlign: 'center' }}>
+                            {order.cancelled?<Alert severity="warning" sx={{ paddingLeft: '10px', paddingRight: '10px' }}>
+                                <AlertTitle sx={{ fontSize: '17px', marginBottom: '0px' }}>Cancelled</AlertTitle>
+                            </Alert>:
                             <Alert severity="success" sx={{ paddingLeft: '10px', paddingRight: '10px' }}>
                                 <AlertTitle sx={{ fontSize: '17px', marginBottom: '0px' }}>Accepted</AlertTitle>
-                            </Alert>
+                            </Alert>}
                         </Grid>
                         <Grid sx={{ width: '30%' }}>
-                            <Grid sx={{ width: '100%', textAlign: 'center', padding: '0px 15px' }}>Instruction-{order.instruction} Combo-{order.combo}</Grid>
+                            <Grid sx={{ width: '100%', textAlign: 'center', padding: '0px 15px' }}>Instruction-{order.bookingDetails.instruction} Combo-{order.bookingDetails.combo}</Grid>
                             {items}
                         </Grid>
                     </Grid>
