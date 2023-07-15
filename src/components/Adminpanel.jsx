@@ -19,9 +19,7 @@ import { io } from "socket.io-client";
 const socket=io.connect("http://localhost:4000");
 
 const Adminpanel = () => {
-    socket.on('check',(data)=>{
-        console.log("this is the data ", data);
-    })
+
     const { code } = useParams()
 
     const hotel = Hotellist.find((h) => {
@@ -34,6 +32,16 @@ const Adminpanel = () => {
     const [renderWindow, setRenderWindow] = useState(<></>);
     const [open, setOpen] = useState(false);
     const [audio, setAudio] = useState( new Audio(sound) );
+
+
+    function trying(){
+        setOpen(true);
+        audio.play();
+    }
+    socket.on('check',(data)=>{
+        console.log("this is the data ", data);
+        trying();
+    })
 
     const orderget = async () => {
         try {
