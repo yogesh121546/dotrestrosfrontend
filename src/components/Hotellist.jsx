@@ -248,6 +248,54 @@ const Hotellist=[
         image:"/images/harikrushna.jpeg",
         discount:"10%",
         rating:4.5
+    },
+    {
+        id:9,
+        name:"King's Corner Pal",
+        location:"Pal, Surat",
+        image:"/images/harikrushna.jpeg",
+        discount:"10%",
+        rating:4.4
+    },
+    {
+        id:10,
+        name:"King's Corner 2",
+        location:"Pal, Surat",
+        image:"/images/harikrushna.jpeg",
+        discount:"10%",
+        rating:4.4
+    },
+    {
+        id:11,
+        name:"King's Corner 3",
+        location:"Pal, Surat",
+        image:"/images/harikrushna.jpeg",
+        discount:"10%",
+        rating:4.4
+    },
+    {
+        id:12,
+        name:"Sizzling Bite",
+        location:", Surat",
+        image:"/images/harikrushna.jpeg",
+        discount:"10%",
+        rating:4.4
+    },
+    {
+        id:13,
+        name:"Secret Kitchen",
+        location:"Kamrej, Surat",
+        image:"/images/harikrushna.jpeg",
+        discount:"10%",
+        rating:4.4
+    },
+    {
+        id:14,
+        name:"Royal Dine",
+        location:"Kamrej, Surat",
+        image:"/images/harikrushna.jpeg",
+        discount:"10%",
+        rating:4.4
     }
 ]
 export default Hotellist;

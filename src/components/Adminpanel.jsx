@@ -16,7 +16,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import sound from './sound.mp3'
 import { io } from "socket.io-client";
 
-const socket=io.connect("http://localhost:4000");
+const socket = io.connect("http://localhost:4000");
 
 const Adminpanel = () => {
 
@@ -31,16 +31,36 @@ const Adminpanel = () => {
     const [orderList, setOrderList] = useState([]);
     const [renderWindow, setRenderWindow] = useState(<></>);
     const [open, setOpen] = useState(false);
-    const [audio, setAudio] = useState( new Audio(sound) );
+    const [activate, setActivate] = useState(false);
+    const [audio, setAudio] = useState(new Audio(sound));
+    const [newOrder, setNewOrder] = useState({ customerDetails: { phoneNumber: 0 } });
 
-
-    function trying(){
+    const handleClickOpen = () => {
         setOpen(true);
         audio.play();
-    }
-    socket.on('check',(data)=>{
+    };
+
+    // const playaudio = () => {
+    //     audio.play();
+    // }
+
+    const handleClose = () => {
+        setOpen(false);
+        audio.pause();
+        setAudio(new Audio(sound));
+    };
+
+    console.log(activate);
+    // const pauseaudio = () => {
+    //     audio.pause();
+    //     setAudio(new Audio(sound));
+    // }
+
+    socket.on('check', (data) => {
         console.log("this is the data ", data);
-        trying();
+        setNewOrder(data.newOrder);
+        handleClickOpen();
+        socket.off();
     })
 
     const orderget = async () => {
@@ -83,12 +103,12 @@ const Adminpanel = () => {
                         <Grid sx={{ width: '10%', textAlign: 'center' }}>{order.bookingDetails.person}</Grid>
                         <Grid sx={{ width: '10%', textAlign: 'center' }}>200</Grid>
                         <Grid sx={{ width: '10%', textAlign: 'center' }}>
-                            {order.cancelled?<Alert severity="warning" sx={{ paddingLeft: '10px', paddingRight: '10px' }}>
+                            {order.cancelled ? <Alert severity="warning" sx={{ paddingLeft: '10px', paddingRight: '10px' }}>
                                 <AlertTitle sx={{ fontSize: '17px', marginBottom: '0px' }}>Cancelled</AlertTitle>
-                            </Alert>:
-                            <Alert severity="success" sx={{ paddingLeft: '10px', paddingRight: '10px' }}>
-                                <AlertTitle sx={{ fontSize: '17px', marginBottom: '0px' }}>Accepted</AlertTitle>
-                            </Alert>}
+                            </Alert> :
+                                <Alert severity="success" sx={{ paddingLeft: '10px', paddingRight: '10px' }}>
+                                    <AlertTitle sx={{ fontSize: '17px', marginBottom: '0px' }}>Accepted</AlertTitle>
+                                </Alert>}
                         </Grid>
                         <Grid sx={{ width: '30%' }}>
                             <Grid sx={{ width: '100%', textAlign: 'center', padding: '0px 15px' }}>Instruction-{order.bookingDetails.instruction} Combo-{order.bookingDetails.combo}</Grid>
@@ -101,23 +121,30 @@ const Adminpanel = () => {
         setRenderWindow(elements);
     }, [orderList]);
 
-    const alertbox = () => {
+    // useEffect(() => {
+    //     if (open) {
+    //         playaudio();
+    //         console.log("Start");
+    //     }
+    //     else {
+    //         handleClose();
+    //         console.log("Stop");
+    //     }
+    // }, [open])
 
-        const handleClickOpen = () => {
-            setOpen(true);
-            audio.play();
-        };
-
-        const handleClose = () => {
-            setOpen(false);
-            audio.pause();
-            setAudio(new Audio(sound));
-        };
-
-        return (<>
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Open alert dialog
-            </Button>
+    return (
+        <>
+            <Grid sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 60px' }}>
+                <Grid sx={{ width: '8%' }}>
+                    <img src="/images/LOGO.png" alt="" style={{ width: '100%', height: 'auto' }} />
+                </Grid>
+                <Grid sx={{ textAlign: 'right' }}>
+                    <Typography sx={{ fontSize: '25px', fontFamily: 'sans-serif', color: '#2a88df', fontWeight: 'bold', textDecoration: 'underline' }}>{hotel.name}</Typography>
+                    {!activate ? <Button onClick={() => {
+                        setActivate(true);
+                    }} sx={{ fontSize: '17px', fontWeight: '400', color: 'red' }}>Click to Activate</Button>
+                :<Button sx={{ fontSize: '17px', fontWeight: '400', color: 'green' }}>Activated</Button>}
+            </Grid>
             <Dialog
                 open={open}
                 aria-labelledby="alert-dialog-title"
@@ -128,32 +155,17 @@ const Adminpanel = () => {
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        Let Google help apps determine location. This means sending anonymous
-                        location data to Google, even when no apps are running.
+                        {newOrder.customerDetails.phoneNumber}
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} sx={{color:'red'}}>Decline</Button>
-                    <Button onClick={handleClose} autoFocus sx={{fontWeight:'bold'}}>
+                    <Button onClick={handleClose} sx={{ color: 'red' }}>Decline</Button>
+                    <Button onClick={handleClose} autoFocus sx={{ fontWeight: 'bold' }}>
                         Accept
                     </Button>
                 </DialogActions>
             </Dialog>
-        </>
-        )
-    };
-
-    return (
-        <>
-            <Grid sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 60px' }}>
-                <Grid sx={{ width: '8%' }}>
-                    <img src="/images/LOGO.png" alt="" style={{ width: '100%', height: 'auto' }} />
-                </Grid>
-                <Grid>
-                    <Typography sx={{ fontSize: '25px', fontFamily: 'sans-serif', color: '#2a88df', fontWeight: 'bold', textDecoration: 'underline' }}>{hotel.name}</Typography>
-                </Grid>
-                {alertbox()}
-            </Grid>
+        </Grid >
             <Grid sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 60px', marginTop: '30px' }}>
                 <Grid sx={{ width: '22%', height: '100px', backgroundColor: '#257ccc', borderRadius: '5px' }}>
                     <Typography sx={{ color: 'white', margin: '10px 15px', fontSize: '20px', fontFamily: 'sans-serif', fontWeight: '100' }}>

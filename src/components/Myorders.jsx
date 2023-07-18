@@ -13,13 +13,20 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Grid } from "@mui/material";
 
 
 const MyOrders = () => {
   const [orderList, setOrderList] = useState([]);
   const [renderWindow, setRenderWindow] = useState(<></>);
   const [open, setOpen] = useState(false);
+
+  const handleopen = () => {
+    setOpen(true);
+  };
+
+  const handleclose = () => {
+    setOpen(false);
+  };
 
 
   const orderget = async () => {
@@ -47,44 +54,14 @@ const MyOrders = () => {
   useEffect(() => {
 
     const elements = orderList.map((order) => {
-
       const hotel = Hotellist.find((h) => {
         return (
           String(h.name) === order.restaurant.name
         )
       })
 
-      const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
       return (
         <>
-        <Dialog
-                open={open}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">
-                    {"Use Google's location service?"}
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                        Let Google help apps determine location. This means sending anonymous
-                        location data to Google, even when no apps are running.
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose} sx={{color:'red'}}>Decline</Button>
-                    <Button onClick={handleClose} autoFocus sx={{fontWeight:'bold'}}>
-                        Accept
-                    </Button>
-                </DialogActions>
-            </Dialog>
           <div className="mainpagediv">
             <div className="img">
               <img src={hotel.image} alt="" />
@@ -104,7 +81,7 @@ const MyOrders = () => {
                 <h6 className="direction"><Link to={hotel.direction} style={{ textDecoration: 'none', color: '#2a88df' }}>Get direction on map</Link></h6>
               </div>
               <div className="action">
-                <Link className="btn" onClick={handleClickOpen}>Summary</Link>
+                <Link className="btn" onClick={handleopen}>Summary</Link>
                 <Link className="btn" to={`/reviews/${hotel.id}`}>Add Review</Link>
                 <Link onClick={async () => {
                   try {
