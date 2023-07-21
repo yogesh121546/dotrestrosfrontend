@@ -718,7 +718,7 @@ useEffect(() => {
                   </Typography>
                 </Grid>
                 <Grid sx={{ marginLeft: "auto", textAlign: "center" }} xs={4}>
-                  <Link onClick={sendOrderDetails} style={{textDecoration:'none'}}>
+                  <Link onClick={sendOrderDetails} style={{textDecoration:'none'}} to="/payment">
                     <MenuItem className='' sx={{
                       justifyContent: "center",
                       color: '#fff',
@@ -730,7 +730,7 @@ useEffect(() => {
                       '&:hover': {
                         backgroundColor: '#2475bf',
                       }
-                    }} >Pay {0.2 * total} Rs. </MenuItem></Link>
+                    }} >Pay {0.2 * total} </MenuItem></Link>
                 </Grid>
               </Grid>
             </CardContent>

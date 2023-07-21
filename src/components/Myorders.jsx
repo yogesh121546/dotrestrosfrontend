@@ -235,6 +235,26 @@ const MyOrders = () => {
       </style>
       <Header />
       <div className="masterdiv"></div>
+      <Dialog
+                open={open}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    {"Use Google's location service?"}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        abcd
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleclose} sx={{ color: 'red' }}>Decline</Button>
+                    <Button onClick={handleclose} autoFocus sx={{ fontWeight: 'bold' }}>
+                        Accept
+                    </Button>
+                </DialogActions>
+            </Dialog>
       {renderWindow}
       <Footer />
     </>

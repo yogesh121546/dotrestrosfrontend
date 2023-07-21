@@ -10,6 +10,7 @@ import Cancellation from './components/Cancellation'
 import Contactus from './components/Contactus'
 import Reviews from './components/Reviews'
 import Adminpanel from './components/Adminpanel';
+import Payment from './components/Payment';
 
 // import Flyer from './components/Flyer'
 // import Hotelcard from './components/Cards'
@@ -32,6 +33,7 @@ function App() {
           <Route exact path='/reviews/:id' element={<Reviews/>} />
           <Route path='/hotelpage/:id' element={<Hotelpage />} />
           <Route path='/adminpanel/:code' element={<Adminpanel />} />
+          <Route path='/payment' element={<Payment />} />
         </Routes>
       </ScrollToTop>
     </>
