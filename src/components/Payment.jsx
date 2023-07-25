@@ -68,7 +68,110 @@ function Payment(){
 			<tr>
 				<td><input type="hidden" name="language" id="language" value="EN" /></td>
 			</tr>
-			
+			<tr>
+				<td>Billing Name</td>
+				<td><input type="hidden" name="billing_name" value="####" /></td>
+			</tr>
+			<tr>
+				<td>Billing Address:</td>
+				<td><input type="hidden" name="billing_address"
+					value="####" /></td>
+			</tr>
+			<tr>
+				<td>Billing City:</td>
+				<td><input type="hidden" name="billing_city" value="####" /></td>
+			</tr>
+			<tr>
+				<td>Billing State:</td>
+				<td><input type="hidden" name="billing_state" value="####" /></td>
+			</tr>
+			<tr>
+				<td>Billing Zip:</td>
+				<td><input type="hidden" name="billing_zip" value="####" /></td>
+			</tr>
+			<tr>
+				<td>Billing Country:</td>
+				<td><input type="hidden" name="billing_country" value="####" />
+				</td>
+			</tr>
+			<tr>
+				<td>Billing Tel:</td>
+				<td><input type="hidden" name="billing_tel" value="####" />
+				</td>
+			</tr>
+			<tr>
+				<td>Billing Email:</td>
+				<td><input type="hidden" name="billing_email"
+					value="####" /></td>
+			</tr>
+			<tr>
+				<td>Shipping Name</td>
+				<td><input type="hidden" name="delivery_name" value="####" />
+				</td>
+			</tr>
+			<tr>
+				<td>Shipping Address:</td>
+				<td><input type="hidden" name="delivery_address"
+					value="####" /></td>
+			</tr>
+			<tr>
+				<td>Shipping City:</td>
+				<td><input type="hidden" name="delivery_city" value="####" />
+				</td>
+			</tr>
+			<tr>
+				<td>Shipping State:</td>
+				<td><input type="hidden" name="delivery_state" value="####" />
+				</td>
+			</tr>
+			<tr>
+				<td>Shipping Zip:</td>
+				<td><input type="hidden" name="delivery_zip" value="####" /></td>
+			</tr>
+			<tr>
+				<td>Shipping Country:</td>
+				<td><input type="hidden" name="delivery_country" value="####" />
+				</td>
+			</tr>
+			<tr>
+				<td>Shipping Tel:</td>
+				<td><input type="hidden" name="delivery_tel" value="####" />
+				</td>
+			</tr>
+			<tr>
+				<td>Merchant Param1</td>
+				<td><input type="hidden" name="merchant_param1"
+					value="additional Info." /></td>
+			</tr>
+			<tr>
+				<td>Merchant Param2</td>
+				<td><input type="hidden" name="merchant_param2"
+					value="additional Info." /></td>
+			</tr>
+			<tr>
+				<td>Merchant Param3</td>
+				<td><input type="hidden" name="merchant_param3"
+					value="additional Info." /></td>
+			</tr>
+			<tr>
+				<td>Merchant Param4</td>
+				<td><input type="hidden" name="merchant_param4"
+					value="additional Info." /></td>
+			</tr>
+			<tr>
+				<td>Merchant Param5</td>
+				<td><input type="hidden" name="merchant_param5"
+					value="additional Info." /></td>
+			</tr>
+			<tr>
+				<td>Promo Code:</td>
+				<td><input type="hidden" name="promo_code" value=""/></td>
+			</tr>
+			<tr>
+				<td>Customer Id:</td>
+				<td><input type="hidden" name="customer_identifier" value=""/></td>
+			</tr>
+
 			<tr>
 				<td></td>
 				<td><input type="submit" value="Pay now" /></td>

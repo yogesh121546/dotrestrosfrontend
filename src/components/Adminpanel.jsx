@@ -16,7 +16,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import sound from './sound.mp3'
 import { io } from "socket.io-client";
 
-const socket = io.connect("http://localhost:4000");
+// const socket = io.connect("https://dotrestros.com");
 
 const Adminpanel = () => {
 
@@ -49,42 +49,47 @@ const Adminpanel = () => {
         audio.pause();
         setAudio(new Audio(sound));
     };
-
-    console.log(activate);
+    
     // const pauseaudio = () => {
     //     audio.pause();
     //     setAudio(new Audio(sound));
     // }
 
-    socket.on('check', (data) => {
-        console.log("this is the data ", data);
-        setNewOrder(data.newOrder);
-        handleClickOpen();
-        socket.off();
-    })
+    // socket.on('check', (data) => {
+    //     console.log("this is the data ", data);
+    //     setNewOrder(data.newOrder);
+    //     handleClickOpen();
+    //     socket.off();
+    // })
 
-    const orderget = async () => {
-        try {
-            const data = await fetch(`${backend_link}/orders`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                credentials: "include",
-            });
-            const order = await data.json();
-            console.log(order);
-            setOrderList(order);
-        } catch (error) {
-            console.log(error);
-        }
+    // useEffect(()=>{
+    //     socket.emit('request-orders',{code:hotel.id})
+    //     socket.on('response-orders',(data)=>{
+    //     setOrderList(data.orders);
+    // })
+    // },[socket,orderList]);
 
-        // setOrderList(["Harikrushna","Joker","Aashirwad"])
-    }
+    // const orderget = async () => {
+    //     try {
+    //         const data = await fetch(`${backend_link}/orders`, {
+    //             method: "GET",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             credentials: "include",
+    //         });
+    //         const order = await data.json();
+    //         setOrderList(order);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
 
-    useEffect(() => {
-        orderget();
-    }, []);
+    //     // setOrderList(["Harikrushna","Joker","Aashirwad"])
+    // }
+
+    // useEffect(() => {
+    //     orderget();
+    // }, []);
 
     useEffect(() => {
         const elements = orderList.map((order) => {
