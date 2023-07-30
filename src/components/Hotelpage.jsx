@@ -48,6 +48,14 @@ const Hotelpage = () => {
 
   let i = 0;
 
+  const { id } = useParams()
+
+  const hotel = Hotellist.find((h) => {
+    return (
+      String(h.id) === id
+    )
+  })
+
   const [expanded, setExpanded] = useState(false);
   const [plus, setPlus] = useState();
   const [dishObject, setDishObject] = useState({
@@ -224,7 +232,8 @@ useEffect(() => {
               "time": time,
               "person":person,
               "combo":combo,
-              "instruction":instruction
+              "instruction":instruction,
+              "advance":(hotel.percent)*total
             },
             "restaurant": {
               "name": hotel.name,
@@ -236,18 +245,12 @@ useEffect(() => {
           credentials: "include"
         });
         const data = await response.json();
+        window.location.href=`/payment/${data[0]._id}`;
       } catch (error) {
       }
     }
     sendData();
   }
-  const { id } = useParams()
-
-  const hotel = Hotellist.find((h) => {
-    return (
-      String(h.id) === id
-    )
-  })
 
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -718,7 +721,7 @@ useEffect(() => {
                   </Typography>
                 </Grid>
                 <Grid sx={{ marginLeft: "auto", textAlign: "center" }} xs={4}>
-                  <Link onClick={sendOrderDetails} style={{textDecoration:'none'}} to="/payment">
+                  <Link onClick={sendOrderDetails} style={{textDecoration:'none'}}>
                     <MenuItem className='' sx={{
                       justifyContent: "center",
                       color: '#fff',

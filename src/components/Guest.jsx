@@ -7,7 +7,7 @@ function Guest(){
         <>
         <style>
             {`
-                .maindiv{
+                .amaindiv{
                     margin:8% 8%;
                     font-size:1.2rem;
                     text-align:justify;
@@ -23,14 +23,14 @@ function Guest(){
                     margin-top:2rem;
                 }
                 @media (max-width:700px){
-                    .maindiv{
+                    .amaindiv{
                         margin-top:20%;
                     }
                 }
             `}
         </style>
         <Header />
-        <div className="maindiv">
+        <div className="amaindiv">
                 <h3 className="headings">General Booking Policy:</h3>
                 <ol className="gbp">
                     <li className="gbptxt">Certain Restaurants may have different guidelines for their customers. Please abide by all laws and guidelines as applicable.</li>

@@ -16,7 +16,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import sound from './sound.mp3'
 import { io } from "socket.io-client";
 
-// const socket = io.connect("https://dotrestros.com");
+const socket = io.connect("https://dotrestros-trying.onrender.com"); //backend_link
 
 const Adminpanel = () => {
 
@@ -33,7 +33,7 @@ const Adminpanel = () => {
     const [open, setOpen] = useState(false);
     const [activate, setActivate] = useState(false);
     const [audio, setAudio] = useState(new Audio(sound));
-    const [newOrder, setNewOrder] = useState({ customerDetails: { phoneNumber: 0 } });
+    // const [newOrder, setNewOrder] = useState({ customerDetails: { phoneNumber: 0 } });
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -55,19 +55,19 @@ const Adminpanel = () => {
     //     setAudio(new Audio(sound));
     // }
 
-    // socket.on('check', (data) => {
-    //     console.log("this is the data ", data);
-    //     setNewOrder(data.newOrder);
-    //     handleClickOpen();
-    //     socket.off();
-    // })
+    socket.on('check', (data) => {
+        handleClickOpen();
+        socket.off();
+    })
 
-    // useEffect(()=>{
-    //     socket.emit('request-orders',{code:hotel.id})
-    //     socket.on('response-orders',(data)=>{
-    //     setOrderList(data.orders);
-    // })
-    // },[socket,orderList]);
+    useEffect(()=>{
+        socket.emit('request-orders',{code:hotel.id})
+        socket.on('response-orders',(data)=>{
+        setOrderList(data.orders);
+    })
+    },[socket,orderList]);
+
+    // console.log(orderList);
 
     // const orderget = async () => {
     //     try {
@@ -106,7 +106,7 @@ const Adminpanel = () => {
                         <Grid sx={{ width: '10%', textAlign: 'center' }}>{order.bookingDetails.date}</Grid>
                         <Grid sx={{ width: '10%', textAlign: 'center' }}>{order.bookingDetails.time}</Grid>
                         <Grid sx={{ width: '10%', textAlign: 'center' }}>{order.bookingDetails.person}</Grid>
-                        <Grid sx={{ width: '10%', textAlign: 'center' }}>200</Grid>
+                        <Grid sx={{ width: '10%', textAlign: 'center' }}>{order.bookingDetails.advance}</Grid>
                         <Grid sx={{ width: '10%', textAlign: 'center' }}>
                             {order.cancelled ? <Alert severity="warning" sx={{ paddingLeft: '10px', paddingRight: '10px' }}>
                                 <AlertTitle sx={{ fontSize: '17px', marginBottom: '0px' }}>Cancelled</AlertTitle>
@@ -160,7 +160,10 @@ const Adminpanel = () => {
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        {newOrder.customerDetails.phoneNumber}
+                        {/* {orderList.bookingDetails.date}
+                        {orderList.bookingDetails.time}
+                        {orderList.bookingDetails.person}
+                        {orderList.bookingDetails.advance} */}
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

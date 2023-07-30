@@ -2,23 +2,26 @@ import React from "react";
 import backend_link from "../links";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 function Payment(){
 
-	const [orderList, setOrderList] = useState([]);
+	const {id} = useParams();
+
+	const [order, setOrder] = useState();
 
 	const orderget = async () => {
 		try {
-		  const data = await fetch(`${backend_link}/users`, {
+		  const data = await fetch(`${backend_link}/orders/${id}`, {
 			method: "GET",
 			headers: {
 			  "Content-Type": "application/json",
 			},
 			credentials: "include",
 		  });
-		  const user = await data.json();
-		  console.log(user.orders);
-		  setOrderList(user.orders);
+		  const orderdata = await data.json();
+		  console.log(orderdata);
+		  setOrder(orderdata);
 		} catch (error) {
 		  console.log(error);
 		}
@@ -41,15 +44,15 @@ function Payment(){
 			</tr>
 			<tr>
 				<td>Order Id</td>
-				<td><input type="text" name="order_id" value={orderList[6]._id} /></td>
+				<td><input type="text" name="order_id" value={id} /></td>
 			</tr>
 			<tr>
 				<td>Name</td>
-				<td><input type="text" name="customer_name" value={orderList[6].customerDetails.bookingName} /></td>
+				<td><input type="text" name="customer_name" value={order.customerDetails.bookingName} /></td>
 			</tr>
 			<tr>
 				<td>Mobile</td>
-				<td><input type="text" name="customer_mobile" value={orderList[6].customerDetails.phoneNumber} /></td>
+				<td><input type="text" name="customer_mobile" value={order.customerDetails.phoneNumber} /></td>
 			</tr>
 			<tr>
 				<td>Amount</td>

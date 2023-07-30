@@ -19,8 +19,25 @@ const MyOrders = () => {
   const [orderList, setOrderList] = useState([]);
   const [renderWindow, setRenderWindow] = useState(<></>);
   const [open, setOpen] = useState(false);
+  const [items, setItems] = useState(<></>);
+  const [order,setOrder] = useState({customerDetails:{bookingName:""},bookingDetails:{date:"",time:"",person:""}});
 
-  const handleopen = () => {
+  const handleopen = async (event) => {
+    const id = (event.target.id.split('-'))[1];
+    try {
+		  const data = await fetch(`${backend_link}/orders/${id}`, {
+			method: "GET",
+			headers: {
+			  "Content-Type": "application/json",
+			},
+			credentials: "include",
+		  });
+		  const orderdata = await data.json();
+		  console.log(orderdata);
+		  setOrder(orderdata.order);
+		} catch (error) {
+		  console.log(error);
+		}
     setOpen(true);
   };
 
@@ -50,7 +67,6 @@ const MyOrders = () => {
     orderget();
   }, []);
 
-
   useEffect(() => {
 
     const elements = orderList.map((order) => {
@@ -62,7 +78,7 @@ const MyOrders = () => {
 
       return (
         <>
-          <div className="mainpagediv">
+          <div className="mainpagediv" id={order._id}>
             <div className="img">
               <img src={hotel.image} alt="" />
             </div>
@@ -81,7 +97,7 @@ const MyOrders = () => {
                 <h6 className="direction"><Link to={hotel.direction} style={{ textDecoration: 'none', color: '#2a88df' }}>Get direction on map</Link></h6>
               </div>
               <div className="action">
-                <Link className="btn" onClick={handleopen}>Summary</Link>
+                <Link className="btn" onClick={handleopen} id={`summary-${order._id}`}>Summary</Link>
                 <Link className="btn" to={`/reviews/${hotel.id}`}>Add Review</Link>
                 <Link onClick={async () => {
                   try {
@@ -107,6 +123,15 @@ const MyOrders = () => {
     });
     setRenderWindow(elements);
   }, [orderList]);
+
+//   useEffect(() => {
+//     const details = order.orderDetails.map((a) => {
+//             return (<>
+//                 {a['name']} {a.qty}
+//             </>);
+//     });
+//     setItems(details);
+// }, [orderList]);
 
   return (
     <>
@@ -241,17 +266,23 @@ const MyOrders = () => {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle id="alert-dialog-title">
-                    {"Use Google's location service?"}
+                    {`Order Details - ${order._id}`}
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        abcd
+                        Name - {order.customerDetails.bookingName} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Contact- {order.customerDetails.phoneNumber} <br />
+                        Date - {order.bookingDetails.date} <br />
+                        Time - {order.bookingDetails.time} <br />
+                        Person - {order.bookingDetails.person} <br />
+                        Combo - {order.bookingDetails.combo} <br />
+                        Instruction - {order.bookingDetails.instruction} <br />
+                        Advance - {order.bookingDetails.advance} <br />
+                        Items - {items}
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleclose} sx={{ color: 'red' }}>Decline</Button>
                     <Button onClick={handleclose} autoFocus sx={{ fontWeight: 'bold' }}>
-                        Accept
+                        Ok
                     </Button>
                 </DialogActions>
             </Dialog>

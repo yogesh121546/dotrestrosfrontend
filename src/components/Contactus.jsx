@@ -7,7 +7,7 @@ function Contactus(){
         <>
         <style>
             {`
-                .maindiv{
+                .amaindiv{
                     margin-top:5rem;
                     font-size:20px;
                     text-align:center;
@@ -49,7 +49,7 @@ function Contactus(){
                 }
 
                 @media (max-width:1200px){
-                    .maindiv{
+                    .amaindiv{
                         height:100vh;
                     }
                     .info{
@@ -70,7 +70,7 @@ function Contactus(){
             `}
         </style>
         <Header />
-            <div className="maindiv">
+            <div className="amaindiv">
                 <h1 className="cu">Feel Free to Reach Us At!</h1>
                 <div className="info">
                 <div className="email hvr"><span className="clr">Email -</span> dotrestros@gmail.com</div>

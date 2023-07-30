@@ -7,7 +7,7 @@ function Cancellation(){
         <>
         <style>
             {`
-                .maindiv{
+                .amaindiv{
                     margin:8% 8%;
                     font-size:1.2rem;
                     text-align:justify;
@@ -16,14 +16,14 @@ function Cancellation(){
                     margin-bottom:1rem;
                 }
                 @media (max-width:700px){
-                    .maindiv{
+                    .amaindiv{
                         margin-top:20%;
                     }
                 }
             `}
         </style>
         <Header />
-        <div className="maindiv">
+        <div className="amaindiv">
             <h3 className="heading">Cancellation Policy:</h3>
             <ol className="cp">
                 <li className="cptxt">You can cancel the pre-order in the My Orders tab given at the top of the website.</li>

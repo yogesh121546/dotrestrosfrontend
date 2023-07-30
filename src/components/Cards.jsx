@@ -14,25 +14,25 @@ const Hotelcard=(props)=> {
 
 const [ratingOverall,setRatingOverall] = useState(0);
 
-// const restroget = async()=>{
-//   try {
-//     const data = await fetch(`${backend_link}/restaurants/${props.id}`,{
-//       method: "GET",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       credentials: "include",
-//     });
-//     const restaurant = await data.json();
-//     setRatingOverall(restaurant.restaurant.ratings.overall);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
+const restroget = async()=>{
+  try {
+    const data = await fetch(`${backend_link}/restaurants/${props.id}`,{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    const restaurant = await data.json();
+    setRatingOverall(restaurant.restaurant.ratings.overall);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-// useEffect(()=>{
-//   restroget();
-// },[])
+useEffect(()=>{
+  restroget();
+},[])
 
   return (
     <Card sx={{ width:'320px',height:'330px',borderRadius:'20px', transition:'0.3s' ,'&:hover':{transform:'scale(1.05)',boxShadow:'-5px 10px 10px 0 rgba(0, 0, 0, 0.2)'} }}>
@@ -55,7 +55,7 @@ const [ratingOverall,setRatingOverall] = useState(0);
           <Grid sx={{ paddingLeft: "14%" }} xs={4} >
             <Fab sx={{ boxShadow: "none",transform:'scale(0.8)' }} color="primary" aria-label="add">
               <Typography variant="h7" fontWeight="700" fontSize="20px"  >
-                {/* {ratingOverall=== 0?"New":ratingOverall} */}
+                {ratingOverall=== 0?"New":ratingOverall}
               </Typography>
             </Fab>
           </Grid>
