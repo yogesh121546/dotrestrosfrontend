@@ -20,24 +20,26 @@ const MyOrders = () => {
   const [renderWindow, setRenderWindow] = useState(<></>);
   const [open, setOpen] = useState(false);
   const [items, setItems] = useState(<></>);
-  const [order,setOrder] = useState({customerDetails:{bookingName:""},bookingDetails:{date:"",time:"",person:""}});
+  const [order, setOrder] = useState({ customerDetails: { bookingName: "" }, bookingDetails: { date: "", time: "", person: "" } });
+
+  const token = localStorage.getItem('token');
 
   const handleopen = async (event) => {
     const id = (event.target.id.split('-'))[1];
     try {
-		  const data = await fetch(`${backend_link}/orders/${id}`, {
-			method: "GET",
-			headers: {
-			  "Content-Type": "application/json",
-			},
-			credentials: "include",
-		  });
-		  const orderdata = await data.json();
-		  console.log(orderdata);
-		  setOrder(orderdata.order);
-		} catch (error) {
-		  console.log(error);
-		}
+      const data = await fetch(`${backend_link}/orders/${id}`, {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `BEARER:${token}`
+        },
+      });
+      const orderdata = await data.json();
+      console.log(orderdata);
+      setOrder(orderdata.order);
+    } catch (error) {
+      console.log(error);
+    }
     setOpen(true);
   };
 
@@ -51,9 +53,9 @@ const MyOrders = () => {
       const data = await fetch(`${backend_link}/users`, {
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
+          'Authorization': `BEARER:${token}`
         },
-        credentials: "include",
       });
       const user = await data.json();
       console.log(user.orders);
@@ -104,9 +106,9 @@ const MyOrders = () => {
                     const data = await fetch(`${backend_link}/orders/${order._id}`, {
                       method: "DELETE",
                       headers: {
-                        "Content-Type": "application/json",
+                        'Content-Type': 'application/json',
+                        'Authorization': `BEARER:${token}`
                       },
-                      credentials: "include",
                     });
                   }
                   catch (error) {
@@ -123,15 +125,6 @@ const MyOrders = () => {
     });
     setRenderWindow(elements);
   }, [orderList]);
-
-//   useEffect(() => {
-//     const details = order.orderDetails.map((a) => {
-//             return (<>
-//                 {a['name']} {a.qty}
-//             </>);
-//     });
-//     setItems(details);
-// }, [orderList]);
 
   return (
     <>
@@ -211,7 +204,7 @@ const MyOrders = () => {
                   justify-content:center;
                 }
                 @media (max-width:550px){
-                  .maindiv{
+                  .mainpagediv{
                     flex-direction:column;
                     height:520px;
                     width:90%;
@@ -261,31 +254,31 @@ const MyOrders = () => {
       <Header />
       <div className="masterdiv"></div>
       <Dialog
-                open={open}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">
-                    {`Order Details - ${order._id}`}
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                        Name - {order.customerDetails.bookingName} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Contact- {order.customerDetails.phoneNumber} <br />
-                        Date - {order.bookingDetails.date} <br />
-                        Time - {order.bookingDetails.time} <br />
-                        Person - {order.bookingDetails.person} <br />
-                        Combo - {order.bookingDetails.combo} <br />
-                        Instruction - {order.bookingDetails.instruction} <br />
-                        Advance - {order.bookingDetails.advance} <br />
-                        Items - {items}
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleclose} autoFocus sx={{ fontWeight: 'bold' }}>
-                        Ok
-                    </Button>
-                </DialogActions>
-            </Dialog>
+        open={open}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {`Order Details - ${order._id}`}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Name - {order.customerDetails.bookingName} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Contact- {order.customerDetails.phoneNumber} <br />
+            Date - {order.bookingDetails.date} <br />
+            Time - {order.bookingDetails.time} <br />
+            Person - {order.bookingDetails.person} <br />
+            Combo - {order.bookingDetails.combo} <br />
+            Instruction - {order.bookingDetails.instruction} <br />
+            Advance - {order.bookingDetails.advance} <br />
+            Items - {items}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleclose} autoFocus sx={{ fontWeight: 'bold' }}>
+            Ok
+          </Button>
+        </DialogActions>
+      </Dialog>
       {renderWindow}
       <Footer />
     </>

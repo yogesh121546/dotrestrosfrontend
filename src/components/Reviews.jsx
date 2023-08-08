@@ -9,6 +9,8 @@ import { Input, Rating, Button} from '@mui/material';
 function Reviews(){
     const { id } = useParams()
 
+    const token = localStorage.getItem('token');
+
     const hotel = Hotellist.find((h) => {
       return (
         String(h.id) === id
@@ -43,10 +45,10 @@ function Reviews(){
           const res = await fetch(`${backend_link}/reviews`, {
             method: "POST",
             headers:{
-                "Content-Type":"application/json"
+                'Content-Type': 'application/json',
+                'Authorization': `BEARER:${token}`
             },
             body: JSON.stringify(data),
-            credentials: "include",
           });
           if (res) {
             const reviewData = await res.json();

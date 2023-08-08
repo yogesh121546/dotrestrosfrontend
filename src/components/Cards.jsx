@@ -13,15 +13,16 @@ import backend_link from '../links';
 const Hotelcard=(props)=> {
 
 const [ratingOverall,setRatingOverall] = useState(0);
+const token = localStorage.getItem('token');
 
 const restroget = async()=>{
   try {
     const data = await fetch(`${backend_link}/restaurants/${props.id}`,{
       method: "GET",
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
+        'Authorization': `BEARER:${token}`
       },
-      credentials: "include",
     });
     const restaurant = await data.json();
     setRatingOverall(restaurant.restaurant.ratings.overall);

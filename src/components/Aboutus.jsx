@@ -696,7 +696,6 @@ html,body{
         </p>
       </div>
       <div style={{ position: "relative" }}>
-        {/* wotking */}
         <div style={{ width: "100%", height: "100%", position: "absolute" }}>
           <div className="container ">
             <div className="row ">

@@ -13,10 +13,10 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import sound from './sound.mp3'
+import sound from './sound.mp3';
 import { io } from "socket.io-client";
 
-const socket = io.connect("https://dotrestros-trying.onrender.com"); //backend_link
+const socket = io.connect("https://dotrestros.com"); //backend_link
 
 const Adminpanel = () => {
 
@@ -40,20 +40,11 @@ const Adminpanel = () => {
         audio.play();
     };
 
-    // const playaudio = () => {
-    //     audio.play();
-    // }
-
     const handleClose = () => {
         setOpen(false);
         audio.pause();
         setAudio(new Audio(sound));
     };
-    
-    // const pauseaudio = () => {
-    //     audio.pause();
-    //     setAudio(new Audio(sound));
-    // }
 
     socket.on('check', (data) => {
         handleClickOpen();
@@ -125,17 +116,6 @@ const Adminpanel = () => {
         });
         setRenderWindow(elements);
     }, [orderList]);
-
-    // useEffect(() => {
-    //     if (open) {
-    //         playaudio();
-    //         console.log("Start");
-    //     }
-    //     else {
-    //         handleClose();
-    //         console.log("Stop");
-    //     }
-    // }, [open])
 
     return (
         <>

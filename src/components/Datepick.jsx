@@ -13,7 +13,6 @@ const DatePick = (props) => {
   }
 
   const currDate=dayjs()
-  // console.log("currdate",currDate)
 
 
 

@@ -1,11 +1,9 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 import '../App.css'
-// import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-// import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 
 
@@ -31,9 +29,6 @@ const Flyer = () => {
           component="form"
           style={{ backgroundColor: '#fff', color: 'red', p: '2px 4px', display: 'flex', alignItems: 'center', width: '57%', height: '60px', position: 'absolute', marginTop: '3%', zIndex: 2, border: 'none', borderRadius: '10px' }}
         >
-          {/* <IconButton sx={{ p: '10px' }} aria-label="menu">
-            <MenuIcon />
-          </IconButton> */}
           <img src={searchLogo} alt="dor restros logo" style={{ width: '60px', height: '30px', margin: '10px' }} />
           <Divider sx={{ height: 35, m: 0.5, width: '2px', backgroundColor: '#2a88df', borderRadius: '5px', borderRight: 0 }} orientation="vertical" />
           <InputBase

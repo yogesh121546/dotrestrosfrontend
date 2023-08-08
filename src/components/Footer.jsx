@@ -117,14 +117,12 @@ const Footer = () => {
                   mr: 2,
                 },
                 "& svg:hover": {
-                  // color: "goldenrod",
                   color: "#2A88DF",
                   transform: "scale(1.2)",
                   transition: "all 400ms",
                 },
               }}
             >
-              {/* icons */}
               <Grid container sx={{textAlign:'center'}}>
                 <Grid item sx={{textAlign:'center', width:'25%'}}><Link style={{ textDecoration: "none", color:"white", textAlign:'center' }} to="https://www.instagram.com/dot_restros/"><InstagramIcon sx={{marginRight:'0px'}} className="ficon1" /></Link></Grid>
                 <Grid item sx={{textAlign:'center', width:'25%'}}><Link style={{ textDecoration: "none", color:"white", textAlign:'center' }} to="https://twitter.com/dot_restros"><TwitterIcon sx={{marginRight:'0px'}} /></Link></Grid>

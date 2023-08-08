@@ -1,6 +1,6 @@
 {
   "name": "dotrestros",
-  "proxy": "https://127.0.0.1:4000",
+  "proxy": "https://dotrestros.com",
   "private": true,
   "dependencies": {
     "@coreui/react": "^4.8.0",

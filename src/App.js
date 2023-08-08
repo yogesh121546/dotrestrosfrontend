@@ -11,18 +11,16 @@ import Contactus from './components/Contactus'
 import Reviews from './components/Reviews'
 import Adminpanel from './components/Adminpanel';
 import Payment from './components/Payment';
-
-// import Flyer from './components/Flyer'
-// import Hotelcard from './components/Cards'
-// import Grid from '@mui/material/Grid';
 import { Route, Routes } from 'react-router-dom';
 import ScrollToTop from "./components/ScrollToTop";
+import LoggedIn from './components/LoggedIn';
 function App() {
   return (
     <>
       <ScrollToTop>
         <Routes>
           <Route exact path='/' element={<Home />} />
+          <Route exact path='/logged/:code' element={<LoggedIn />} />
           <Route exact path='/aboutus' element={<Aboutus/>} />
           <Route exact path='/myorders' element={<Myorders/>} />
           <Route exact path='/terms' element={<Terms/>} />
@@ -33,7 +31,7 @@ function App() {
           <Route exact path='/reviews/:id' element={<Reviews/>} />
           <Route path='/hotelpage/:id' element={<Hotelpage />} />
           <Route path='/adminpanel/:code' element={<Adminpanel />} />
-          <Route path='/payment' element={<Payment />} />
+          <Route path='/payment/:id' element={<Payment />} />
         </Routes>
       </ScrollToTop>
     </>

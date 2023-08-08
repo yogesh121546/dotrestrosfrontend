@@ -50,6 +50,8 @@ const Hotelpage = () => {
 
   const { id } = useParams()
 
+  const token = localStorage.getItem('token');
+
   const hotel = Hotellist.find((h) => {
     return (
       String(h.id) === id
@@ -71,7 +73,7 @@ const Hotelpage = () => {
   const [date, setdate] = useState("")
   const [time, settime] = useState("")
   const [person,setPerson] = useState("")
-  const [combo,setCombo] = useState("")
+  const [combo,setCombo] = useState("No")
   const [instruction,setInstruction] = useState("")
 
   //restaurent prices map
@@ -145,8 +147,6 @@ useEffect(() => {
     })
     setsumDish(summary)
 
-    // dishArray.forEach((item) => {
-
 
     if (plus) {
       setTotal(total + Number(dishObject.price))
@@ -159,16 +159,6 @@ useEffect(() => {
         }
       })
     }
-
-
-
-    //     else if (total > 0 && total >= (Number(dishObject.price))) {
-    // setTotal(total - (Number(dishObject.price)))
-    // })
-
-
-
-
 
     //eslint-disable-next-line
   }, [dishArray])
@@ -215,12 +205,16 @@ useEffect(() => {
 
     console.log(orderDetails)
     const sendData = async () => {
+      console.log(hotel.percent);
+      console.log(total);
+      console.log((hotel.percent)*total);
       try {
         console.log(`here is person value ${person}`)
         const response = await fetch(`${backend_link}/orders`, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
+            'Authorization': `BEARER:${token}`
           },
           body: JSON.stringify({
             "customerDetails": {
@@ -242,7 +236,6 @@ useEffect(() => {
             "orderDetails": preorderDetails
 
           }),
-          credentials: "include"
         });
         const data = await response.json();
         window.location.href=`/payment/${data[0]._id}`;
@@ -270,9 +263,9 @@ useEffect(() => {
       const data = await fetch(`${backend_link}/restaurants/${hotel.id}`,{
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
+          'Authorization': `BEARER:${token}`
         },
-        credentials: "include",
       });
       const restaurant = await data.json();
       setRatingOverall(restaurant.restaurant.ratings.overall);
@@ -294,17 +287,15 @@ useEffect(() => {
       const data = await fetch(`${backend_link}/reviews`, {
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
+          'Authorization': `BEARER:${token}`
         },
-        credentials: "include",
       });
       const review = await data.json();
       setReviewList(review);
     } catch (error) {
       console.log(error);
     }
-      
-      // setOrderList(["Harikrushna","Joker","Aashirwad"])
     }
 
     useEffect(()=>{
@@ -698,7 +689,7 @@ useEffect(() => {
                 </Grid>
                 <Grid sx={{ marginLeft: "auto", textAlign: "center" }} xs={4}>
                   <Typography variant="h5" fontWeight="700" >
-                    {0.2 * total}
+                    {(hotel.percent) * total}
                   </Typography>
                 </Grid>
               </Grid>
@@ -717,7 +708,7 @@ useEffect(() => {
               <Grid sx={{ color: "#282828", marginBottom: "2%" }} container >
                 <Grid xs={8}>
                   <Typography variant="h7" fontWeight="400" >
-                    Pay 20% to confirm your order. <br />Discount will be done at restaurant.
+                    Pay {hotel.percent*100}% to confirm your order. <br />Discount will be done at restaurant.
                   </Typography>
                 </Grid>
                 <Grid sx={{ marginLeft: "auto", textAlign: "center" }} xs={4}>
@@ -733,7 +724,7 @@ useEffect(() => {
                       '&:hover': {
                         backgroundColor: '#2475bf',
                       }
-                    }} >Pay {0.2 * total} </MenuItem></Link>
+                    }} >Pay {(hotel.percent) * total} </MenuItem></Link>
                 </Grid>
               </Grid>
             </CardContent>
@@ -819,12 +810,3 @@ useEffect(() => {
   )
 }
 export default Hotelpage
-
-
-
-
-
-
-
-
-
