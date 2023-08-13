@@ -64,12 +64,14 @@ const Adminpanel = () => {
 
     useEffect(() => {
         orderGet();
+        console.log("Use effect");
     }, []);
 
     socket.on('check', (data) => {
         console.log("this is the data ", data);
         handleClickOpen();
         orderGet();
+        console.log("Socket");
         socket.off();
     })
 
@@ -104,9 +106,10 @@ const Adminpanel = () => {
                     </Grid>
                 </>);
             }
+            return (<></>);
         });
         setRenderWindow(elements);
-    }, [orderList]);
+    }, [orderList,hotel.name]);
 
     return (
         <>
