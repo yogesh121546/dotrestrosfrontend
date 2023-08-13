@@ -5,7 +5,7 @@ function LoggedIn() {
     const { code } = useParams()
     const saveToken = () => {
         localStorage.setItem('token', code);
-        window.location.href = "http://localhost:3000/"
+        window.location.href = "https://dotrestros.netlify.app/"
     }
     saveToken();
 

@@ -1,7 +1,6 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import backend_link from "../links";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Alert, AlertTitle } from '@mui/material';
@@ -15,6 +14,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import sound from './sound.mp3';
 import { io } from "socket.io-client";
+import backend_link from '../links'
 
 const socket = io.connect("https://dotrestros.com"); //backend_link
 
@@ -33,7 +33,6 @@ const Adminpanel = () => {
     const [open, setOpen] = useState(false);
     const [activate, setActivate] = useState(false);
     const [audio, setAudio] = useState(new Audio(sound));
-    // const [newOrder, setNewOrder] = useState({ customerDetails: { phoneNumber: 0 } });
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -46,41 +45,33 @@ const Adminpanel = () => {
         setAudio(new Audio(sound));
     };
 
+    const token = localStorage.getItem('token');
+    const orderGet = async () => {
+        try {
+            const data = await fetch(`${backend_link}/orders`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    'Authorization': `BEARER:${token}`
+                },
+            });
+            const order = await data.json();
+            setOrderList(order);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        orderGet();
+    }, []);
+
     socket.on('check', (data) => {
+        console.log("this is the data ", data);
         handleClickOpen();
+        orderGet();
         socket.off();
     })
-
-    useEffect(()=>{
-        socket.emit('request-orders',{code:hotel.id})
-        socket.on('response-orders',(data)=>{
-        setOrderList(data.orders);
-    })
-    },[socket,orderList]);
-
-    // console.log(orderList);
-
-    // const orderget = async () => {
-    //     try {
-    //         const data = await fetch(`${backend_link}/orders`, {
-    //             method: "GET",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             credentials: "include",
-    //         });
-    //         const order = await data.json();
-    //         setOrderList(order);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-
-    //     // setOrderList(["Harikrushna","Joker","Aashirwad"])
-    // }
-
-    // useEffect(() => {
-    //     orderget();
-    // }, []);
 
     useEffect(() => {
         const elements = orderList.map((order) => {
